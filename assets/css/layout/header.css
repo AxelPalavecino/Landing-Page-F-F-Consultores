@@ -1,8 +1,8 @@
 /* ============================================ 
-ESTILOS BASE (Mobile First)
-============================================ */
+    ESTILOS BASE (Mobile First)
+    ============================================ */
 
-/* Bloque Pricipal (Header) */
+/* Bloque Principal (Header) */
 .header {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -43,8 +43,6 @@ ESTILOS BASE (Mobile First)
 .header__logo {
     display: flex;
     align-items: center;
-
-    /* Espacio si estuviera el texto */
     gap: 0.75rem;
     transition: transform 0.3s ease;
 }
@@ -69,14 +67,15 @@ ESTILOS BASE (Mobile First)
     font-size: 1rem;
     font-family: var(--font-titles);
     color: var(--color-primary);
-    padding-left: 0.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, color;
 }
 
 .header__logo:hover .header__title-text {
     color: var(--color-primary-dark);
+    transform: translateX(2px);
 }
 
 /* Barra de Navegacion Movil (☰) */
@@ -84,6 +83,11 @@ ESTILOS BASE (Mobile First)
     font-size: 1.5rem;
     color: var(--color-primary);
     display: block;
+    transition: transform 0.2s ease;
+}
+
+.header__toggle:hover {
+    transform: scale(1.1);
 }
 
 /* Menú de Navegación */
@@ -92,11 +96,11 @@ ESTILOS BASE (Mobile First)
     top: 0;
     right: -100%;
     background-color: var(--color-white);
-    width: 81%;
+    width: 80%;
     height: 100vh;
     padding: 2rem;
     box-shadow: -5px 0 15px rgb(0, 0, 0, 0.1);
-    transition: right 0.4s ease;
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: var(--z-modal);
 
     /* Centrado de enlaces verticales en el movil */
@@ -107,26 +111,31 @@ ESTILOS BASE (Mobile First)
 
 /* Esta clase utiliza JS para añadir el menú */
 .nav.show-menu {
-    right: 0; /* Trae a la vista */
+    right: 0;
 }
 
 .nav__list {
     display: flex;
-    flex-direction: column; /* Lista vertical en móvil */
+    flex-direction: column;
     align-items: center;
-    gap: 2rem; /* Espacio grande entre enlaces */
+    gap: 2rem;
 }
 
 .nav__link {
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--color-text-main);
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .nav__link:hover {
     color: var(--color-primary);
-    transition: color 0.3s;
+}
+
+/* Estado activo en móvil */
+.nav__link.active:not(.nav__link--cta) {
+    color: var(--color-primary);
+    font-weight: 600;
 }
 
 .nav__close {
@@ -136,26 +145,38 @@ ESTILOS BASE (Mobile First)
     font-size: 1.5rem;
     color: var(--color-text-main);
     cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
+.nav__close:hover {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+/* Botón CTA (Contacto) */
 .nav__link--cta {
     background-color: var(--color-primary);
-    color: var(--color-white) !important; /* Forzamos blanco */
+    color: var(--color-white) !important;
     padding: 0.8rem 2rem;
     border-radius: var(--border-radius);
-    box-shadow: 0 2px 8px rgba(94, 140, 68, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(94, 140, 68, 0.25);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .nav__link--cta:hover {
     background-color: var(--color-primary-dark);
-    transition: background-color 1s;
+    box-shadow: 0 4px 12px rgba(94, 140, 68, 0.35);
+    transform: translateY(-2px);
+}
+
+.nav__link--cta:active {
+    transform: translateY(0);
 }
 
 /* =========================================
     VERSIÓN ESCRITORIO (Media Queries)
     Cuando la pantalla sea mayor a 768px...
-   ========================================= */
+    ========================================= */
 @media screen and (min-width: 768px) {
 
     /* 1. Ocultar elementos móviles */
@@ -166,35 +187,36 @@ ESTILOS BASE (Mobile First)
 
     /* 2. Resetear el menú para que sea horizontal */
     .nav {
-        position: static; /* Ya no flota fijo */
+        position: static;
         width: auto;
         height: auto;
         padding: 0;
         background-color: transparent;
         box-shadow: none;
-        display: block; /* Vuelve a ser un bloque normal */
-        right: 0; /* Aseguramos que se vea */
-        /* Quitamos flex column del contenedor padre */
+        display: block;
+        right: 0;
     }
 
     .nav__list {
-        flex-direction: row; /* Lista horizontal */
-        gap: 2rem; /* Espacio entre items */
+        flex-direction: row;
+        gap: 2rem;
         margin-left: 1.5rem;
     }
 
     .nav__link {
-        font-size: 1rem; /* Letra más pequeña que en móvil */
+        font-size: 0.95rem;
+        font-weight: 500;
         position: relative;
+        padding: 0.25rem 0;
     }
 
-    /* Efecto subrayado elegante al pasar el mouse */
+    /* Efecto subrayado elegante */
     .nav__link:not(.nav__link--cta)::after {
         content: '';
         position: absolute;
         width: 0;
         height: 2px;
-        bottom: -4px;
+        bottom: -2px;
         left: 50%;
         transform: translateX(-50%);
         background-color: var(--color-primary);
@@ -202,10 +224,13 @@ ESTILOS BASE (Mobile First)
         transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .nav__link:not(.nav__link--cta):hover::after {
+    .nav__link:not(.nav__link--cta):hover::after,
+    .nav__link.active:not(.nav__link--cta)::after {
         width: 100%;
     }
 
+    /* Estado activo y hover */
+    .nav__link.active:not(.nav__link--cta),
     .nav__link:not(.nav__link--cta):hover {
         color: var(--color-primary);
     }
@@ -214,10 +239,16 @@ ESTILOS BASE (Mobile First)
     .nav__link--cta {
         padding: 0.6rem 1.5rem;
         margin-left: 0.5rem;
+        font-size: 0.9rem;
     }
 
     .nav__link--cta:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgb(40, 157, 40);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(94, 140, 68, 0.35);
+    }
+
+    .nav__link--cta:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(94, 140, 68, 0.25);
     }
 }

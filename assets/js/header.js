@@ -1,8 +1,8 @@
-/* assets/js/main.js */
+/* assets/js/header.js */
 
 /* =========================================
     MENU SHOW Y HIDDEN
-   ========================================= */
+    ========================================= */
 
 // ========================
 // Seleccionamos los elementos del DOM (Document Object Model)
@@ -42,7 +42,7 @@ if (navClose) {
 /* =========================================
     QUITAR MENÚ AL HACER CLICK EN UN LINK
     (UX: Experiencia de Usuario)
-   ========================================= */
+    ========================================= */
 // Seleccionamos TODOS los links del menú
 const navLink = document.querySelectorAll('.nav__link');
 
@@ -71,3 +71,32 @@ const scrollHeader = () => {
 
 // Escuchamos el evento scroll
 window.addEventListener('scroll', scrollHeader);
+
+/* =========================================
+    ACTIVE LINK EN NAVEGACIÓN
+    (Resalta la sección actual)
+    ========================================= */
+const sections = document.querySelectorAll('section[id]');
+
+const scrollActive = () => {
+    const scrollY = window.scrollY;
+
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100; // Offset para mejor detección
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.nav__link[href="#${sectionId}"]`);
+
+        if (navLink) {
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLink.classList.add('active');
+            } else {
+                navLink.classList.remove('active');
+            }
+        }
+    });
+}
+
+// Ejecutar al cargar y al hacer scroll
+window.addEventListener('scroll', scrollActive);
+window.addEventListener('load', scrollActive);

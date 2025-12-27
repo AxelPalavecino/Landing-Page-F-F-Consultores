@@ -1,0 +1,87 @@
+/* assets/css/components/buttons.css */
+
+/* =========================================
+    BOTÓN PRINCIPAL (.button)
+    ========================================= */
+.button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 1rem 2.25rem;
+    border-radius: var(--border-radius);
+    font-family: var(--font-main);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(94, 140, 68, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de brillo sutil al hover */
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(94, 140, 68, 0.4);
+}
+
+.button:hover::before {
+    transform: translateX(100%);
+}
+
+.button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(94, 140, 68, 0.3);
+}
+
+/* =========================================
+    VARIANTE SECUNDARIA (.button--outline)
+    ========================================= */
+.button--outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    box-shadow: none;
+}
+
+.button--outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0 4px 14px rgba(94, 140, 68, 0.3);
+}
+
+/* =========================================
+    VARIANTE PEQUEÑA (.button--sm)
+    ========================================= */
+.button--sm {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.875rem;
+}
+
+/* =========================================
+    VARIANTE GRANDE (.button--lg)
+    ========================================= */
+.button--lg {
+    padding: 1.15rem 2.75rem;
+    font-size: 1rem;
+}
