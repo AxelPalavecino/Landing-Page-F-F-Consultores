@@ -1,1 +1,28 @@
 /* Variables Globales CSS */ 
+
+/* assets/css/base/vars.css */
+:root {
+    /* --- COLORES (Extraídos de tu diseño original) --- */
+    --color-primary: #5E8C44;       /* Verde F&F */
+    --color-primary-dark: #2c5b10;  /* Verde oscuro (hover) */
+    --color-accent: #EFDD68;        /* Amarillo/Dorado */
+    
+    --color-text-main: #333333;     /* Negro suave para texto */
+    --color-text-light: #666666;    /* Gris para párrafos secundarios */
+    --color-white: #ffffff;
+    --color-bg-light: #f9f9f9;      /* Fondo gris muy clarito */
+
+    /* --- FUENTES --- */
+    --font-main: 'Noto Sans', sans-serif;  /* Para textos largos */
+    --font-titles: 'Manrope', sans-serif;  /* Para títulos impactantes */
+
+    /* --- MEDIDAS --- */
+    --container-width: 1200px;      /* Ancho máximo del contenido */
+    --header-height: 70px;          /* Altura fija del header */
+    --border-radius: 8px;           /* Bordes redondeados estándar */
+    
+    /* --- Z-INDEX (Capas de profundidad) --- */
+    --z-modal: 2000;
+    --z-header: 1000;
+    --z-overlay: 900;
+}

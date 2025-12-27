@@ -1,0 +1,26 @@
+/* .container: 
+    Encargado de que el contenido no se pegue a los bordes en el celular y que no se estire infinitamente en pantallas grandes
+*/
+
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    
+    /* Auto a la izq + Auto a la derecha = Centrado */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Margen interno de seguridad para moviles */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.section {
+    /* Espacio Estandar arriba y abajo de cada seccion */
+    padding-block: 5rem 2rem; 
+}
+
+.text-center {
+    text-align: center;
+}
+

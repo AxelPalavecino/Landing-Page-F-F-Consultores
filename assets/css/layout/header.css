@@ -1,0 +1,184 @@
+/* ============================================ 
+ESTILOS BASE (Mobile First)
+============================================ */
+
+/* Bloque Pricipal (Header) */
+.header {
+    background-color: var(--color-white);
+    height: var(--header-height);
+
+    /* Esto me permite que este siempre visible al hacer scroll */
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-header);
+
+    /* Sombra */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+
+    /* Flexbox para alinear verticalmente el contenido */
+    display: flex;
+    align-items: center;
+}
+
+/* Contenedor interno (flex para separar Logo <-> Boton) */
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Bloque de Logo + Titulo */
+.header__logo {
+    display: flex;
+    align-items: center;
+
+    /* Espacio si estuviera el texto */
+    gap: 0.5rem;
+}
+
+/* Imagen: Logo F&F */
+.header__img {
+    height: 40px;
+    width: auto;
+}
+
+/* Texto: Titulo de Header ("F&F Consultores") */
+.header__title-text {
+    font-size: 1rem;
+    color: var(--color-primary);
+    font-weight: 650;
+}
+
+/* Barra de Navegacion Movil (☰) */
+.header__toggle {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    display: block;
+}
+
+/* Menú de Navegación */
+.nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background-color: var(--color-white);
+    width: 80%;
+    height: 100vh;
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgb(0, 0, 0, 0.1);
+    transition: right 0.4s ease;
+    z-index: var(--z-modal);
+
+    /* Centrado de enlaces verticales en el movil */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Esta clase utiliza JS para añadir el menú */
+.nav.show-menu {
+    right: 0; /* Trae a la vista */
+}
+
+.nav__list {
+    display: flex;
+    flex-direction: column; /* Lista vertical en móvil */
+    align-items: center;
+    gap: 2rem; /* Espacio grande entre enlaces */
+}
+
+.nav__link {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+    transition: color 0.3s;
+}
+
+.nav__link:hover {
+    color: var(--color-primary);
+    transition: color 0.3s;
+}
+
+.nav__close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--color-text-main);
+    cursor: pointer;
+}
+
+.nav__link--cta {
+    background-color: var(--color-primary);
+    color: var(--color-white) !important; /* Forzamos blanco */
+    padding: 0.8rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(26, 125, 54, 0.2);
+}
+
+/* =========================================
+    VERSIÓN ESCRITORIO (Media Queries)
+    Cuando la pantalla sea mayor a 768px...
+   ========================================= */
+@media screen and (min-width: 768px) {
+
+    /* 1. Ocultar elementos móviles */
+    .header__toggle, 
+    .nav__close {
+        display: none; 
+    }
+
+    /* 2. Resetear el menú para que sea horizontal */
+    .nav {
+        position: static; /* Ya no flota fijo */
+        width: auto;
+        height: auto;
+        padding: 0;
+        background-color: transparent;
+        box-shadow: none;
+        display: block; /* Vuelve a ser un bloque normal */
+        right: 0; /* Aseguramos que se vea */
+        /* Quitamos flex column del contenedor padre */
+    }
+
+    .nav__list {
+        flex-direction: row; /* Lista horizontal */
+        gap: 2.5rem; /* Espacio entre items */
+        margin-left: 1.5rem;
+    }
+
+    .nav__link {
+        font-size: 1rem; /* Letra más pequeña que en móvil */
+        position: relative;
+    }
+
+    /* Efecto subrayado elegante al pasar el mouse */
+    .nav__link:not(.nav__link--cta)::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: var(--color-accent);
+        transition: width 0.3s ease;
+    }
+
+    .nav__link:not(.nav__link--cta)::hover::after {
+        width: 100%;
+    }
+
+    /* Ajuste botón CTA escritorio */
+    .nav__link--cta {
+        padding: 0.6rem 1.5rem;
+        transition: transform 0.3s ease, background-color 0.3s;
+    }
+
+    .nav__link--cta:hover {
+        background-color: var(--color-primary-dark);
+        transform: translateY(-2px);
+    }
+}

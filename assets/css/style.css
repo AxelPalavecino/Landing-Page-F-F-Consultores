@@ -7,6 +7,7 @@ style.css actua como hoja de ruta para el archivo index.html, importando en orde
 /* 1. Reiniciar estilos por defecto del navegador y definir variables globales */
 @import url("./base/reset.css");
 @import url("./base/vars.css");
+@import url("./base/global.css");
 
 /* 2. Estilos de layout (contenedores principales) */
 @import url("./layout/header.css");

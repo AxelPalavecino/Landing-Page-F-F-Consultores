@@ -1,0 +1,43 @@
+/* assets/css/base/reset.css */
+
+/* 1. Reset básico de márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* VITAL: El padding no agranda las cajas */
+}
+
+/* 2. Comportamiento suave al hacer scroll (cuando pulsas en "Contacto") */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base estándar */
+}
+
+body {
+    font-family: var(--font-main); /* Usamos la variable que definimos */
+    color: var(--color-text-main);
+    line-height: 1.6;
+    background-color: var(--color-white);
+}
+
+/* 3. Quitar estilos por defecto feos */
+a {
+    text-decoration: none;
+    color: inherit; /* Hereda el color del padre */
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+img {
+    max-width: 100%; /* Que las imágenes nunca se salgan de su contenedor */
+    display: block;  /* Quita el espacio fantasma debajo de las imágenes */
+}
