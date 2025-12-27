@@ -53,3 +53,21 @@ const linkAction = () => {
 
 // Por cada link, agregamos un "escuchador" de clic
 navLink.forEach(n => n.addEventListener('click', linkAction));
+
+/* =========================================
+    EFECTO SCROLL EN HEADER
+    (Añade sombra al hacer scroll)
+   ========================================= */
+const header = document.querySelector('.header');
+
+const scrollHeader = () => {
+    // Si el scroll es mayor a 50px, añadimos la clase 'scrolled'
+    if (window.scrollY >= 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+}
+
+// Escuchamos el evento scroll
+window.addEventListener('scroll', scrollHeader);
