@@ -12,5 +12,5 @@ style.css actua como hoja de ruta para el archivo index.html, importando en orde
 /* 2. Estilos de layout (contenedores principales) */
 @import url("./layout/header.css");
 
-/* 3. Estilos de bloques / secciones */
-@import url("./layout/hero.css");
+/* 3. Estilos de secciones */
+@import url("./sections/hero.css");

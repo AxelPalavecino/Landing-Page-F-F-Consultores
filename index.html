@@ -11,9 +11,21 @@
     <meta name="description" content="Consultoría integral en seguridad, higiene y gestión de obras.">
 
     <!-- Fuentes (Google Fonts)-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;900&display=swap">
+    </noscript>
+
+    <!-- Precarga de Imagenes de Hero -->
+    <link rel="preload" as="images" href="./assets/img/content/hero/hero1.png">
+    <link rel="preload" as="images" href="./assets/img/content/hero/hero2.png">
+    <link rel="preload" as="images" href="./assets/img/content/hero/hero3.png">
+    <link rel="preload" as="images" href="./assets/img/content/hero/hero4.png">
+    <link rel="preload" as="images" href="./assets/img/content/hero/hero5.png">
+    <link rel="preload" as="images" href="./assets/img/content/hero/hero6.png">
+    <link rel="preload" as="images" href="./assets/img/content/hero/hero7.png">
 
     <!-- Importamos archivo CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -61,10 +73,56 @@
         </div>
     </header>
 
-    
+    <!-- ============================================
+    MAIN (Sections Fijas)
+    ============================================ -->
+    <main class="main">
 
+        <!-- ============================================
+        HERO (Bloque con Portada de Pagina)
+        ============================================ -->
+        <section id="inicio" class="hero section">
+
+            <!-- Card contenedora con bordes redondeados -->
+            <div class="hero__card">
+
+                <!-- Slider de fondo -->
+                <div class="hero__slider" id="hero-slider">
+                    <div class="hero__bg-image" style="background-image: url(./assets/img/content/hero/hero1.png);"></div>
+                    <div class="hero__overlay"></div>
+                </div>
+
+                <!-- Contenido principal -->
+                <div class="hero__container">
+
+                    <!-- Logo flotante en esquina -->
+                    <div class="hero__visual">
+                        <div class="hero__circle">
+                            <img src="./assets/img/icons/LogoF&F.png" alt="Logo F&F" class="hero__logo" />
+                        </div>
+                    </div>
+
+                    <!-- Texto -->
+                    <div class="hero__content">
+                        <h1 class="hero__title">
+                            Tu Aliado Estratégico en <br>
+                            <span class="hero__highlight">Seguridad y Eficiencia</span>
+                        </h1>
+                        <p class="hero__text">
+                            Impulsamos el crecimiento de tu empresa reduciendo la siniestralidad y optimizando procesos. 
+                            Prevenimos incidentes y capacitamos a tu equipo para garantizar un entorno seguro.
+                        </p>
+                        <a href="#servicios" class="button">Conocer Servicios</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        
+    </main>
     <!-- Importacion de archivos JS -->
     <script src="./assets/js/header.js"></script>
-
+    <script src="./assets/js/hero.js"></script>
 </body>
 </html>
