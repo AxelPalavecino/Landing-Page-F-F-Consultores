@@ -1,7 +1,7 @@
 /* assets/js/projects.js */
 
 /* =========================================
-   LIGHTBOX (Galería de Proyectos)
+   LIGHTBOX PRO (Galería Interactiva)
    ========================================= */
 
 const initLightbox = () => {
@@ -15,6 +15,7 @@ const initLightbox = () => {
     const lbDesc = lightbox.querySelector('.lightbox__desc');
     const btnPrev = lightbox.querySelector('.lightbox__nav--prev');
     const btnNext = lightbox.querySelector('.lightbox__nav--next');
+    const btnClose = lightbox.querySelector('.lightbox__close');
 
     // Datos
     const projectTriggers = Array.from(document.querySelectorAll('.project__btn'));
@@ -23,47 +24,78 @@ const initLightbox = () => {
     // Estado
     let currentIndex = 0;
     const totalProjects = projectTriggers.length;
+    
+    // Variables para Touch
     let touchStartX = 0;
+    let touchStartY = 0;
 
-    // Actualizar UI
+    // ----------------------------------------------------
+    // FUNCIÓN CORE: Actualizar UI
+    // ----------------------------------------------------
     const updateLightboxUI = (index) => {
         const trigger = projectTriggers[index];
         const data = trigger.dataset;
 
-        lbImg.style.opacity = '0.5';
-        lbImg.src = data.src;
-        lbImg.alt = data.title;
-        lbCategory.textContent = data.category;
-        lbTitle.textContent = data.title;
-        lbDesc.textContent = data.description;
+        // 1. Ocultar imagen actual suavemente
+        // Usamos opacidad 0 para evitar ver la imagen anterior mientras carga la nueva
+        lbImg.style.opacity = '0';
+        lbImg.style.transform = 'scale(0.96)'; // Pequeño efecto zoom out
 
-        lbImg.onload = () => {
-            lbImg.style.opacity = '1';
-        };
+        // Pequeño timeout para permitir que la transición de salida se note
+        setTimeout(() => {
+            // 2. Cambiar datos
+            lbImg.src = data.src;
+            lbImg.alt = data.title;
+            lbCategory.textContent = data.category;
+            lbTitle.textContent = data.title;
+            lbDesc.textContent = data.description;
 
-        // Precarga siguiente imagen
+            // 3. Mostrar cuando esté cargada
+            lbImg.onload = () => {
+                lbImg.style.opacity = '1';
+                lbImg.style.transform = 'scale(1)';
+            };
+        }, 200); // 200ms coincide con una transición rápida CSS
+
+        // 4. Precarga Inteligente (Siguiente imagen)
         const nextIndex = (index + 1) % totalProjects;
         const nextImg = new Image();
         nextImg.src = projectTriggers[nextIndex].dataset.src;
     };
 
-    // Abrir
+    // ----------------------------------------------------
+    // CONTROLADORES
+    // ----------------------------------------------------
     const openLightbox = (index) => {
         currentIndex = index;
-        updateLightboxUI(currentIndex);
+        // Pre-carga inmediata sin animación para la primera vez
+        const trigger = projectTriggers[index];
+        lbImg.src = trigger.dataset.src;
+        lbCategory.textContent = trigger.dataset.category;
+        lbTitle.textContent = trigger.dataset.title;
+        lbDesc.textContent = trigger.dataset.description;
+        
+        // Mostrar
         lightbox.classList.add('is-open');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        
+        // Accesibilidad: Enfocar el botón de cerrar
+        setTimeout(() => btnClose.focus(), 100);
+        
+        // Animación entrada imagen
+        requestAnimationFrame(() => {
+            lbImg.style.opacity = '1';
+            lbImg.style.transform = 'scale(1)';
+        });
     };
 
-    // Cerrar
     const closeLightbox = () => {
         lightbox.classList.remove('is-open');
         lightbox.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
     };
 
-    // Navegación
     const nextImage = () => {
         currentIndex = (currentIndex + 1) % totalProjects;
         updateLightboxUI(currentIndex);
@@ -74,7 +106,11 @@ const initLightbox = () => {
         updateLightboxUI(currentIndex);
     };
 
-    // Event Listeners
+    // ----------------------------------------------------
+    // EVENT LISTENERS
+    // ----------------------------------------------------
+    
+    // Triggers (Tarjetas)
     projectTriggers.forEach((trigger, index) => {
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
@@ -82,12 +118,14 @@ const initLightbox = () => {
         });
     });
 
+    // Botones Navegación
     btnNext.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
     btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+    btnClose.addEventListener('click', closeLightbox);
 
-    // Cerrar con data-close
+    // Cerrar al click fuera
     lightbox.addEventListener('click', (e) => {
-        if (e.target.closest('[data-close]')) {
+        if (e.target === lightbox || e.target.classList.contains('lightbox__overlay')) {
             closeLightbox();
         }
     });
@@ -95,21 +133,37 @@ const initLightbox = () => {
     // Teclado
     document.addEventListener('keydown', (e) => {
         if (!lightbox.classList.contains('is-open')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'ArrowLeft') prevImage();
+        
+        switch(e.key) {
+            case 'Escape': closeLightbox(); break;
+            case 'ArrowRight': nextImage(); break;
+            case 'ArrowLeft': prevImage(); break;
+        }
     });
 
-    // Swipe táctil
+    // ----------------------------------------------------
+    // GESTOS TÁCTILES PRO (Con detección de eje Y)
+    // ----------------------------------------------------
     lightbox.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
     }, { passive: true });
 
     lightbox.addEventListener('touchend', (e) => {
         const touchEndX = e.changedTouches[0].screenX;
-        const diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 50) {
-            diff > 0 ? nextImage() : prevImage();
+        const touchEndY = e.changedTouches[0].screenY;
+        
+        const diffX = touchStartX - touchEndX;
+        const diffY = touchStartY - touchEndY;
+
+        // Lógica PRO: Solo deslizar si el movimiento es horizontal
+        // Si se movió mucho en vertical (Y), es que quería hacer scroll, no swipe.
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            // Umbral de 50px para confirmar intención
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) nextImage(); // Deslizó a izquierda -> Siguiente
+                else prevImage(); // Deslizó a derecha -> Anterior
+            }
         }
     }, { passive: true });
 };
@@ -122,17 +176,24 @@ const initProjectAnimations = () => {
     if (!cards.length) return;
 
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.style.transitionDelay = `${index * 0.1}s`;
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
+                // Cálculo dinámico del delay basado en el índice
+                // Esto evita tener que saber el índice global si hay filtrado
+                const target = entry.target;
+                target.classList.add('is-visible');
+                observer.unobserve(target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { 
+        threshold: 0.15, // Esperar a que se vea un 15%
+        rootMargin: "0px 0px -50px 0px" // Offset inferior para efecto elegante
+    });
 
-    cards.forEach(card => {
+    cards.forEach((card, index) => {
         card.classList.add('is-hidden');
+        // Asignamos el delay via estilo inline para la cascada
+        card.style.transitionDelay = `${index * 0.1}s`; 
         observer.observe(card);
     });
 };

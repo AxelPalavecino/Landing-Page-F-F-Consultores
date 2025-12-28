@@ -1,8 +1,10 @@
 /* assets/css/components/modals.css */
 
+/* Modals para Services */
+
 /* =========================================
-   1. CONTENEDOR MAESTRO (Fixed)
-   ========================================= */
+    CONTENEDOR MAESTRO (Fixed)
+    ========================================= */
 .modal {
     position: fixed;
     inset: 0;
@@ -24,8 +26,8 @@
 }
 
 /* =========================================
-   2. OVERLAY (Fondo Oscuro)
-   ========================================= */
+    OVERLAY (Fondo Oscuro)
+    ========================================= */
 .modal__overlay {
     position: absolute;
     inset: 0;
@@ -37,8 +39,8 @@
 }
 
 /* =========================================
-   3. VENTANA DEL MODAL
-   ========================================= */
+    VENTANA DEL MODAL
+    ========================================= */
 .modal__container {
     background-color: var(--color-white);
     width: 100%;
@@ -64,8 +66,8 @@
 }
 
 /* =========================================
-   4. HEADER DEL MODAL
-   ========================================= */
+    HEADER DEL MODAL
+    ========================================= */
 .modal__header {
     padding: 1.25rem 1.5rem;
     background-color: var(--color-white);
@@ -132,8 +134,8 @@
 }
 
 /* =========================================
-   5. CUERPO SCROLLABLE
-   ========================================= */
+    CUERPO SCROLLABLE
+    ========================================= */
 .modal__body {
     padding: 1.5rem;
     overflow-y: auto;
@@ -156,8 +158,8 @@
 }
 
 /* =========================================
-   6. CONTENIDO DEL TEMPLATE
-   ========================================= */
+    CONTENIDO DEL TEMPLATE
+    ========================================= */
 
 /* Intro */
 .modal__intro {
@@ -237,8 +239,8 @@
 }
 
 /* =========================================
-   7. FOOTER DEL MODAL
-   ========================================= */
+    FOOTER DEL MODAL
+    ========================================= */
 .modal__footer {
     padding: 1rem 1.5rem;
     background-color: var(--color-bg-light);
@@ -254,8 +256,8 @@
 }
 
 /* =========================================
-   8. RESPONSIVE (Desktop)
-   ========================================= */
+    RESPONSIVE (Desktop)
+    ========================================= */
 @media screen and (min-width: 768px) {
     .modal {
         padding: 2rem;

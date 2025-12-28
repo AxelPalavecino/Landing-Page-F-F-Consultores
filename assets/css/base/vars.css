@@ -49,4 +49,15 @@
     --z-modal: 2000;
     --z-header: 1000;
     --z-overlay: 900;
+
+    /* --- BRANDING SAFETY WEST (Promoción) --- */
+    --color-sw-red: #E93B26;        /* Rojo Fuego Principal */
+    --color-sw-orange: #E98D3A;     /* Naranja Intermedio */
+    --color-sw-yellow: #EDB840;     /* Amarillo Detalle */
+    
+    /* Gradiente "Fuego" listo para usar en fondos o textos */
+    --gradient-sw-fire: linear-gradient(135deg, #E93B26 0%, #E98D3A 50%, #EDB840 100%);
+    
+    /* Un fondo oscuro específico para esta sección (para que resalte el fuego) */
+    --color-sw-bg: #120505; /* Un negro rojizo muy profundo */
 }
