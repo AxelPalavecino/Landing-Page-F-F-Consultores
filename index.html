@@ -273,14 +273,167 @@
                 </div>
             </div>
         </section>
-        
-    </main>
-    <!-- Importacion de archivos JS -->
-    <script src="./assets/js/header.js"></script>
-    <script src="./assets/js/hero.js"></script>
-    <script src="./assets/js/services.js"></script>
-    <script src="./assets/js/modals.js"></script>
 
+        <!-- ============================================
+        <!-- SECCIÓN 4: PROYECTOS (Galería Grid)
+        ============================================ -->
+        <section id="proyectos" class="projects section">
+            <div class="container">
+                
+                <!-- Header de la sección -->
+                <div class="projects__header">
+                    <h2 class="projects__title">Galería de Proyectos</h2>
+                    <p class="projects__description">
+                        Una selección de nuestros trabajos más destacados en industria, construcción y gestión ambiental.
+                    </p>
+                </div>
+
+                <!-- Grilla de Proyectos -->
+                <div class="projects__grid">
+
+                    <!-- PROYECTO 1 -->
+                    <article class="project__card">
+                        <figure class="project__figure">
+                            <!-- loading="lazy" es vital para la velocidad -->
+                            <img src="./assets/img/content/projects/project1.png" alt="Supervisión de Obra Civil" class="project__img" loading="lazy">
+                            
+                            <!-- Overlay con información (aparece al hover) -->
+                            <figcaption class="project__overlay">
+                                <span class="project__category">Construcción</span>
+                                <h3 class="project__name">Supervisión en Planta Industrial</h3>
+                                <!-- Botón invisible que cubre todo para abrir el lightbox -->
+                                <button class="project__btn" aria-label="Ver proyecto Supervisión en Planta" 
+                                        data-src="./assets/img/content/projects/project1.png"
+                                        data-title="Supervisión en Planta Industrial"
+                                        data-category="Construcción"
+                                        data-description="Gestión integral de seguridad en montaje de estructuras metálicas de gran porte.">
+                                </button>
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                    <!-- PROYECTO 2 -->
+                    <article class="project__card">
+                        <figure class="project__figure">
+                            <img src="./assets/img/content/projects/project2.png" alt="Auditoría Ambiental" class="project__img" loading="lazy">
+                            <figcaption class="project__overlay">
+                                <span class="project__category">Medio Ambiente</span>
+                                <h3 class="project__name">Auditoría Ambiental Integral</h3>
+                                <button class="project__btn" aria-label="Ver proyecto Auditoría Ambiental"
+                                        data-src="./assets/img/content/projects/project2.png"
+                                        data-title="Auditoría Ambiental Integral"
+                                        data-category="Medio Ambiente"
+                                        data-description="Relevamiento y adecuación normativa para certificación ISO 14001.">
+                                </button>
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                    <!-- PROYECTO 3 -->
+                    <article class="project__card">
+                        <figure class="project__figure">
+                            <img src="./assets/img/content/projects/project3.png" alt="Capacitación de Personal" class="project__img" loading="lazy">
+                            <figcaption class="project__overlay">
+                                <span class="project__category">Capacitación</span>
+                                <h3 class="project__name">Formación de Brigadas</h3>
+                                <button class="project__btn" aria-label="Ver proyecto Formación de Brigadas"
+                                        data-src="./assets/img/content/projects/project3.png"
+                                        data-title="Formación de Brigadas"
+                                        data-category="Capacitación"
+                                        data-description="Entrenamiento práctico de brigadas de emergencia y simulacro de evacuación.">
+                                </button>
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                    <!-- PROYECTO 4 -->
+                    <article class="project__card">
+                        <figure class="project__figure">
+                            <img src="./assets/img/content/projects/project4.png" alt="Instalación Eléctrica" class="project__img" loading="lazy">
+                            <figcaption class="project__overlay">
+                                <span class="project__category">Ingeniería</span>
+                                <h3 class="project__name">Certificación Eléctrica</h3>
+                                <button class="project__btn" aria-label="Ver proyecto Certificación Eléctrica"
+                                        data-src="./assets/img/content/projects/project4.png"
+                                        data-title="Certificación Eléctrica"
+                                        data-category="Ingeniería"
+                                        data-description="Medición de puesta a tierra y termografía de tableros principales.">
+                                </button>
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                    <!-- PROYECTO 5 -->
+                    <article class="project__card">
+                        <figure class="project__figure">
+                            <img src="./assets/img/content/projects/project5.png" alt="Gestión de Riesgos" class="project__img" loading="lazy">
+                            <figcaption class="project__overlay">
+                                <span class="project__category">Consultoría</span>
+                                <h3 class="project__name">Matriz de Riesgos</h3>
+                                <button class="project__btn" aria-label="Ver proyecto Matriz de Riesgos"
+                                        data-src="./assets/img/content/projects/project5.png"
+                                        data-title="Matriz de Riesgos"
+                                        data-category="Consultoría"
+                                        data-description="Desarrollo de análisis de riesgos operativos para planta logística.">
+                                </button>
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                    <!-- PROYECTO 6 -->
+                    <article class="project__card">
+                        <figure class="project__figure">
+                            <img src="./assets/img/content/projects/project6.png" alt="Montaje Industrial" class="project__img" loading="lazy">
+                            <figcaption class="project__overlay">
+                                <span class="project__category">Obras</span>
+                                <h3 class="project__name">Montaje de Línea</h3>
+                                <button class="project__btn" aria-label="Ver proyecto Montaje de Línea"
+                                        data-src="./assets/img/content/projects/project6.png"
+                                        data-title="Montaje de Línea"
+                                        data-category="Obras"
+                                        data-description="Supervisión de seguridad en montaje de nueva línea de producción automatizada.">
+                                </button>
+                            </figcaption>
+                        </figure>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================
+    LIGHTBOX (Visor de Imágenes)
+    ============================================ -->
+    <div class="lightbox" id="project-lightbox" aria-hidden="true">
+        <div class="lightbox__overlay" data-close></div>
+        
+        <div class="lightbox__container">
+            <button class="lightbox__close" aria-label="Cerrar" data-close>✕</button>
+            
+            <button class="lightbox__nav lightbox__nav--prev" aria-label="Anterior">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            
+            <figure class="lightbox__figure">
+                <img src="" alt="" class="lightbox__img">
+                <figcaption class="lightbox__caption">
+                    <span class="lightbox__category"></span>
+                    <h3 class="lightbox__title"></h3>
+                    <p class="lightbox__desc"></p>
+                </figcaption>
+            </figure>
+
+            <button class="lightbox__nav lightbox__nav--next" aria-label="Siguiente">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+    </div>
 
     <!-- ============================================
     MODAL GLOBAL (Cascarón Reutilizable)
@@ -512,5 +665,12 @@
             </div>
         </div>
     </template>
+
+    <!-- Scripts -->
+    <script src="./assets/js/header.js"></script>
+    <script src="./assets/js/hero.js"></script>
+    <script src="./assets/js/services.js"></script>
+    <script src="./assets/js/modals.js"></script>
+    <script src="./assets/js/projects.js"></script>
 </body>
 </html>
