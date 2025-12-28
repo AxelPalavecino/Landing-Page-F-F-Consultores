@@ -283,33 +283,23 @@
 
 
     <!-- ============================================
-    MODAL GLOBAL (Cascarón Vacio)
-    Este elemento es único y se reutiliza para todos los servicios.
+    MODAL GLOBAL (Cascarón Reutilizable)
     ============================================ -->
     <div class="modal" id="global-modal" aria-hidden="true">
-        <!-- Overlay oscuro de fondo -->
         <div class="modal__overlay" data-close></div>
 
-        <!-- Contenedor de la ventana -->
         <div class="modal__container" role="dialog" aria-modal="true">
             
-            <!-- Header del Modal (Icono y Título se llenan con JS) -->
             <header class="modal__header">
                 <div class="modal__header-top">
-                    <div class="modal__icon-wrapper">
-                        <!-- El SVG se inyectará aquí -->
-                    </div>
-                    <h3 class="modal__title"><!-- Título dinámico --></h3>
+                    <div class="modal__icon-wrapper"></div>
+                    <h3 class="modal__title"></h3>
                 </div>
                 <button class="modal__close" aria-label="Cerrar modal" data-close>✕</button>
             </header>
 
-            <!-- Cuerpo del Modal (Donde va el contenido largo) -->
-            <div class="modal__body" id="modal-body-content">
-                <!-- El contenido del template se inyectará aquí -->
-            </div>
+            <div class="modal__body" id="modal-body-content"></div>
 
-            <!-- Footer del Modal (Acción) -->
             <footer class="modal__footer">
                 <a href="#contacto" class="button modal__cta" data-close>Solicitar Presupuesto</a>
             </footer>
