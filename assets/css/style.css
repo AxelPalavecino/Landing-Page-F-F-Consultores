@@ -11,9 +11,11 @@ style.css actua como hoja de ruta para el archivo index.html, importando en orde
 
 /* 2. Componentes reutilizables */
 @import url("./components/buttons.css");
+@import url('./components/modals.css');
 
 /* 3. Estilos de layout (contenedores principales) */
 @import url("./layout/header.css");
 
 /* 4. Estilos de secciones */
 @import url("./sections/hero.css");
+@import url("./sections/services.css");

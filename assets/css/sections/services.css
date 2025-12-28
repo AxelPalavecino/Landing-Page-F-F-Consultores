@@ -1,0 +1,260 @@
+/* assets/css/sections/services.css */
+
+/* =========================================
+   1. ESTRUCTURA GENERAL
+   ========================================= */
+.services {
+    background-color: var(--color-bg-light);
+    position: relative;
+    z-index: 10;
+}
+
+/* =========================================
+   2. CABECERA DE SECCIÓN
+   ========================================= */
+.services__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    text-align: center;
+}
+
+/* Contador minimalista */
+.services__counter {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.services__counter-number {
+    font-family: var(--font-titles);
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.services__counter-label {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+/* Contenido del header */
+.services__header-content {
+    max-width: 550px;
+}
+
+.services__title {
+    font-family: var(--font-titles);
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
+    color: var(--color-text-main);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.services__description {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+}
+
+/* =========================================
+   2.1 RESPONSIVE HEADER
+   ========================================= */
+@media screen and (min-width: 768px) {
+    .services__header {
+        flex-direction: row;
+        text-align: left;
+        gap: 3rem;
+        margin-bottom: 4rem;
+    }
+    
+    .services__counter {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        padding-right: 3rem;
+        border-right: 1px solid var(--color-border);
+    }
+    
+    .services__counter-number {
+        font-size: 5rem;
+    }
+    
+    .services__counter-label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-text-muted);
+    }
+    
+    .services__header-content {
+        max-width: none;
+    }
+}
+
+/* =========================================
+   3. GRILLA DE TARJETAS
+   ========================================= */
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+}
+
+/* =========================================
+   4. TARJETA (CARD)
+   ========================================= */
+.services__card {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    
+    /* Sombra sutil */
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border-light);
+    
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    /* Transiciones */
+    transition: all var(--transition-slow);
+    position: relative;
+}
+
+/* Borde lateral izquierdo - efecto hover */
+.services__card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background-color: var(--color-primary);
+    border-radius: 0 3px 3px 0;
+    transform: translateY(-50%);
+    transition: height var(--transition-slow);
+}
+
+/* Hover de la tarjeta */
+.services__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.services__card:hover::before {
+    height: 60%;
+}
+
+/* =========================================
+   5. ICONOS
+   ========================================= */
+.services__icon-box {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-primary-light);
+    transition: all var(--transition-slow);
+}
+
+.services__icon {
+    width: 28px;
+    height: 28px;
+    color: var(--color-primary);
+    transition: all var(--transition-slow);
+}
+
+/* Hover del icono */
+.services__card:hover .services__icon-box {
+    background-color: var(--color-primary);
+    transform: scale(1.05);
+}
+
+.services__card:hover .services__icon {
+    color: var(--color-white);
+}
+
+/* =========================================
+   6. CONTENIDO INTERNO
+   ========================================= */
+.services__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.services__card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-titles);
+    transition: color var(--transition-base);
+}
+
+.services__card:hover .services__card-title {
+    color: var(--color-primary);
+}
+
+.services__card-description {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* =========================================
+   7. BOTÓN DE TARJETA
+   ========================================= */
+.services__button {
+    margin-top: auto;
+    align-self: flex-start;
+    font-size: 0.85rem;
+    padding: 0.6rem 1.25rem;
+}
+
+.services__card:hover .services__button {
+    background-color: var(--color-primary);
+    transform: translateY(-2px); /* Pequeño salto extra */
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+/* =========================================
+   8. RESPONSIVE
+   ========================================= */
+@media screen and (min-width: 768px) {
+    .services__grid {
+        gap: 2rem;
+    }
+    
+    .services__card {
+        padding: 2.25rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .services__header {
+        margin-bottom: 4rem;
+    }
+    
+    .services__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -113,10 +113,414 @@
             </div>
 
         </section>
+
+        <!-- ============================================
+        SERVICIOS (Cards Grid)
+        ============================================ -->
+        <section id="servicios" class="services section">
+            <div class="container">
+                
+                <!-- Cabecera de la sección -->
+                <div class="services__header">
+                    <div class="services__counter">
+                        <span class="services__counter-number" data-target="7">0</span>
+                        <span class="services__counter-label">Servicios</span>
+                    </div>
+                    <div class="services__header-content">
+                        <h2 class="services__title">Soluciones Integrales para su Empresa</h2>
+                        <p class="services__description">
+                            Nuestro equipo de expertos brinda soluciones personalizadas en seguridad, ambiente y gestión, 
+                            maximizando el rendimiento y garantizando el cumplimiento normativo.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Grilla de Tarjetas -->
+                <div class="services__grid">
+
+                    <!-- CARD 1: Seguridad e Higiene -->
+                    <article class="services__card">
+                        <div class="services__icon-box">
+                            <svg class="services__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <div class="services__content">
+                            <h3 class="services__card-title">Seguridad e Higiene</h3>
+                            <p class="services__card-description">Implementamos medidas preventivas para garantizar un entorno de trabajo seguro, minimizando riesgos y cumpliendo con normativas.</p>
+                            <button class="button button--sm button--outline services__button" data-id="seguridad">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- CARD 2: Control Ambiental -->
+                    <article class="services__card">
+                        <div class="services__icon-box">
+                            <svg class="services__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 20h10"/>
+                                <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                                <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                                <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                            </svg>
+                        </div>
+                        <div class="services__content">
+                            <h3 class="services__card-title">Control Ambiental</h3>
+                            <p class="services__card-description">Monitoreamos el impacto ambiental de las operaciones, asegurando el cumplimiento de regulaciones y prácticas sostenibles.</p>
+                            <button class="button button--sm button--outline services__button" data-id="ambiental">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- CARD 3: Obras y Montajes -->
+                    <article class="services__card">
+                        <div class="services__icon-box">
+                            <svg class="services__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="6" width="20" height="8" rx="1"/>
+                                <path d="M17 14v7"/>
+                                <path d="M7 14v7"/>
+                                <path d="M17 3v3"/>
+                                <path d="M7 3v3"/>
+                                <path d="M10 14 2.3 6.3"/>
+                                <path d="m14 6 7.7 7.7"/>
+                                <path d="m8 6 8 8"/>
+                            </svg>
+                        </div>
+                        <div class="services__content">
+                            <h3 class="services__card-title">Obras y Montajes</h3>
+                            <p class="services__card-description">Coordinamos y ejecutamos proyectos industriales, optimizando tiempos y recursos para garantizar eficiencia.</p>
+                            <button class="button button--sm button--outline services__button" data-id="obras">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- CARD 4: RRHH -->
+                    <article class="services__card">
+                        <div class="services__icon-box">
+                            <svg class="services__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <div class="services__content">
+                            <h3 class="services__card-title">Recursos Humanos</h3>
+                            <p class="services__card-description">Gestionamos el talento humano, promoviendo el desarrollo profesional y un ambiente laboral óptimo.</p>
+                            <button class="button button--sm button--outline services__button" data-id="rrhh">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- CARD 5: Seguros/ART -->
+                    <article class="services__card">
+                        <div class="services__icon-box">
+                            <svg class="services__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/>
+                                <path d="M14 2v4a2 2 0 0 0 2 2h4"/>
+                                <path d="M3 15h6"/>
+                                <path d="M6 12v6"/>
+                            </svg>
+                        </div>
+                        <div class="services__content">
+                            <h3 class="services__card-title">Seguros y ART</h3>
+                            <p class="services__card-description">Brindamos asesoramiento en seguros y ART, garantizando protección ante riesgos laborales e imprevistos.</p>
+                            <button class="button button--sm button--outline services__button" data-id="seguros">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- CARD 6: Desarrollo de Proyectos -->
+                    <article class="services__card">
+                        <div class="services__icon-box">
+                            <svg class="services__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                            </svg>
+                        </div>
+                        <div class="services__content">
+                            <h3 class="services__card-title">Desarrollo de Proyectos</h3>
+                            <p class="services__card-description">Diseñamos y gestionamos proyectos industriales innovadores, asegurando calidad y cumplimiento normativo.</p>
+                            <button class="button button--sm button--outline services__button" data-id="proyectos">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <!-- CARD 7: Ensayos Técnicos -->
+                    <article class="services__card">
+                        <div class="services__icon-box">
+                            <svg class="services__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <path d="m9 15 2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <div class="services__content">
+                            <h3 class="services__card-title">Ensayos Técnicos</h3>
+                            <p class="services__card-description">Realizamos pruebas y verificaciones para garantizar el correcto funcionamiento de instalaciones industriales.</p>
+                            <button class="button button--sm button--outline services__button" data-id="ensayos">
+                                Ver Detalles
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
         
     </main>
     <!-- Importacion de archivos JS -->
     <script src="./assets/js/header.js"></script>
     <script src="./assets/js/hero.js"></script>
+    <script src="./assets/js/services.js"></script>
+    <script src="./assets/js/modals.js"></script>
+
+
+    <!-- ============================================
+    MODAL GLOBAL (Cascarón Vacio)
+    Este elemento es único y se reutiliza para todos los servicios.
+    ============================================ -->
+    <div class="modal" id="global-modal" aria-hidden="true">
+        <!-- Overlay oscuro de fondo -->
+        <div class="modal__overlay" data-close></div>
+
+        <!-- Contenedor de la ventana -->
+        <div class="modal__container" role="dialog" aria-modal="true">
+            
+            <!-- Header del Modal (Icono y Título se llenan con JS) -->
+            <header class="modal__header">
+                <div class="modal__header-top">
+                    <div class="modal__icon-wrapper">
+                        <!-- El SVG se inyectará aquí -->
+                    </div>
+                    <h3 class="modal__title"><!-- Título dinámico --></h3>
+                </div>
+                <button class="modal__close" aria-label="Cerrar modal" data-close>✕</button>
+            </header>
+
+            <!-- Cuerpo del Modal (Donde va el contenido largo) -->
+            <div class="modal__body" id="modal-body-content">
+                <!-- El contenido del template se inyectará aquí -->
+            </div>
+
+            <!-- Footer del Modal (Acción) -->
+            <footer class="modal__footer">
+                <a href="#contacto" class="button modal__cta" data-close>Solicitar Presupuesto</a>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ============================================
+    TEMPLATES DE CONTENIDO (Información Oculta)
+    JavaScript leerá esto y lo meterá en el modal según corresponda.
+    ============================================ -->
+
+    <!-- 1. Template: Seguridad e Higiene -->
+    <template id="template-seguridad">
+        <div class="modal__intro">
+            <h4>Auditoría y Evaluación Inicial</h4>
+            <p>Realizamos una auditoría general para evaluar el estado de la empresa en relación con la legislación vigente. A partir de este diagnóstico, ofrecemos soluciones personalizadas.</p>
+        </div>
+        <div class="modal__grid">
+            <!-- Bloque 1 -->
+            <div class="modal__item">
+                <h5 class="modal__item-title">Informes y Documentación</h5>
+                <ul class="modal__list">
+                    <li>Elaboración de informes personalizados y Legajos Técnicos.</li>
+                    <li>Presentación de formularios obligatorios (RGRL, RAR).</li>
+                    <li>Actualización de la matriz legal en Higiene y Seguridad.</li>
+                </ul>
+            </div>
+            <!-- Bloque 2 -->
+            <div class="modal__item">
+                <h5 class="modal__item-title">Capacitación</h5>
+                <ul class="modal__list">
+                    <li>Plan anual de capacitación y simulacros.</li>
+                    <li>Cursos específicos con material multimedia.</li>
+                    <li>Formación de brigadas de emergencia.</li>
+                </ul>
+            </div>
+            <!-- Bloque 3 -->
+            <div class="modal__item">
+                <h5 class="modal__item-title">Inspecciones y Riesgos</h5>
+                <ul class="modal__list">
+                    <li>Relevamiento general de instalaciones.</li>
+                    <li>Creación de matriz de riesgos laborales.</li>
+                    <li>Seguimiento del Programa de Reducción de Siniestralidad.</li>
+                </ul>
+            </div>
+            <!-- Bloque 4 -->
+            <div class="modal__item">
+                <h5 class="modal__item-title">Mediciones Legales</h5>
+                <ul class="modal__list">
+                    <li>Iluminación, Ruido, Puesta a Tierra (Res. 900/15).</li>
+                    <li>Carga Térmica y Ventilación.</li>
+                    <li>Estudios ergonómicos (Res. 886/15).</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <!-- 2. Template: Control Ambiental -->
+    <template id="template-ambiental">
+        <div class="modal__intro">
+            <h4>Auditoría y Gestión Ambiental</h4>
+            <p>Evaluamos el estado de la empresa respecto a la normativa ambiental y gestionamos la adecuación ante entes reguladores como MAPBA, ACUMAR y APRA.</p>
+        </div>
+        <div class="modal__grid">
+            <div class="modal__item">
+                <h5 class="modal__item-title">Documentación</h5>
+                <ul class="modal__list">
+                    <li>Manual Ambiental adaptado a la actividad.</li>
+                    <li>Matriz de aspectos e impactos ambientales.</li>
+                    <li>Gestión de residuos especiales e industriales.</li>
+                </ul>
+            </div>
+            <div class="modal__item">
+                <h5 class="modal__item-title">Prevención y Control</h5>
+                <ul class="modal__list">
+                    <li>Plan de contingencias ambientales.</li>
+                    <li>Mediciones de efluentes gaseosos y líquidos.</li>
+                    <li>Estudios de Impacto Ambiental (EIA).</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <!-- 3. Template: Obras y Montajes -->
+    <template id="template-obras">
+        <div class="modal__intro">
+            <h4>Gestión Integral en Obras</h4>
+            <p>Servicio especializado para obras civiles, montajes industriales y paradas de planta, asegurando el cumplimiento del Decreto 911/96.</p>
+        </div>
+        <div class="modal__grid">
+            <div class="modal__item">
+                <h5 class="modal__item-title">Asesoramiento Técnico</h5>
+                <ul class="modal__list">
+                    <li>Provisión de Técnicos y Licenciados en obra.</li>
+                    <li>Confección de Programas de Seguridad.</li>
+                    <li>Legajos Técnicos y Avisos de Obra.</li>
+                </ul>
+            </div>
+            <div class="modal__item">
+                <h5 class="modal__item-title">Supervisión Operativa</h5>
+                <ul class="modal__list">
+                    <li>Permisos de trabajo de alto riesgo (Altura, Caliente, Espacios Confinados).</li>
+                    <li>Control de documentación de contratistas.</li>
+                    <li>Auditorías de campo permanentes.</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <!-- 4. Template: RRHH -->
+    <template id="template-rrhh">
+        <div class="modal__intro">
+            <h4>Gestión Estratégica del Talento</h4>
+            <p>Optimizamos la gestión de recursos humanos para garantizar un clima laboral positivo y el cumplimiento de las obligaciones legales.</p>
+        </div>
+        <div class="modal__grid">
+            <div class="modal__item">
+                <h5 class="modal__item-title">Administración</h5>
+                <ul class="modal__list">
+                    <li>Liquidación de sueldos y jornales.</li>
+                    <li>Presentación de Declaraciones Juradas (F.931).</li>
+                    <li>Libros de sueldos y jornales (Digital/Hojas móviles).</li>
+                </ul>
+            </div>
+            <div class="modal__item">
+                <h5 class="modal__item-title">Relaciones Laborales</h5>
+                <ul class="modal__list">
+                    <li>Gestión ante Ministerio de Trabajo y Sindicatos.</li>
+                    <li>Altas, bajas y modificaciones en AFIP.</li>
+                    <li>Atención de inspecciones y requerimientos.</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <!-- 5. Template: Seguros y ART -->
+    <template id="template-seguros">
+        <div class="modal__intro">
+            <h4>Protección Patrimonial y Laboral</h4>
+            <p>Asesoramiento integral en la gestión de riesgos y contratación de coberturas para la empresa y sus trabajadores.</p>
+        </div>
+        <div class="modal__grid">
+            <div class="modal__item">
+                <h5 class="modal__item-title">Gestión de ART</h5>
+                <ul class="modal__list">
+                    <li>Análisis de alícuotas y re-cotizaciones.</li>
+                    <li>Seguimiento de siniestros y prestaciones médicas.</li>
+                    <li>Gestión de exámenes periódicos y pre-ocupacionales.</li>
+                </ul>
+            </div>
+            <div class="modal__item">
+                <h5 class="modal__item-title">Seguros Generales</h5>
+                <ul class="modal__list">
+                    <li>Responsabilidad Civil Comprensiva.</li>
+                    <li>Seguros de Flota y Maquinaria.</li>
+                    <li>Caución y Todo Riesgo Construcción.</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <!-- 6. Template: Proyectos -->
+    <template id="template-proyectos">
+        <div class="modal__intro">
+            <h4>Ingeniería y Desarrollo</h4>
+            <p>Diseño, cálculo y dirección de proyectos civiles e industriales, desde la factibilidad hasta la puesta en marcha.</p>
+        </div>
+        <div class="modal__grid">
+            <div class="modal__item">
+                <h5 class="modal__item-title">Diseño y Cálculo</h5>
+                <ul class="modal__list">
+                    <li>Elaboración de planos municipales y de obra.</li>
+                    <li>Cálculo estructural y de instalaciones.</li>
+                    <li>Optimización de layouts industriales.</li>
+                </ul>
+            </div>
+            <div class="modal__item">
+                <h5 class="modal__item-title">Dirección de Obra</h5>
+                <ul class="modal__list">
+                    <li>Gestión de cronogramas y certificaciones.</li>
+                    <li>Control de calidad de materiales y ejecución.</li>
+                    <li>Habilitaciones industriales y comerciales.</li>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <!-- 7. Template: Ensayos -->
+    <template id="template-ensayos">
+        <div class="modal__intro">
+            <h4>Verificaciones Técnicas</h4>
+            <p>Ensayos y mediciones sobre instalaciones críticas para asegurar la continuidad operativa y la seguridad.</p>
+        </div>
+        <div class="modal__grid">
+            <div class="modal__item">
+                <h5 class="modal__item-title">Instalaciones Eléctricas</h5>
+                <ul class="modal__list">
+                    <li>Medición de Puesta a Tierra (Res. 900/15).</li>
+                    <li>Continuidad de las masas.</li>
+                    <li>Disparo de disyuntores diferenciales.</li>
+                </ul>
+            </div>
+            <div class="modal__item">
+                <h5 class="modal__item-title">Aparatos a Presión</h5>
+                <ul class="modal__list">
+                    <li>Pruebas hidráulicas y medición de espesores.</li>
+                    <li>Calibración de válvulas de seguridad.</li>
+                    <li>Habilitación de calderas y recipientes (OPDS).</li>
+                </ul>
+            </div>
+        </div>
+    </template>
 </body>
 </html>
