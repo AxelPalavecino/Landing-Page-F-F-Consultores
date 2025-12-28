@@ -1,0 +1,414 @@
+/* assets/css/sections/safety-west.css */
+
+/* =========================================
+   1. ATMÓSFERA Y FONDO (Dark Mode Premium)
+   ========================================= */
+.safety-west {
+    background-color: var(--color-sw-bg); 
+    position: relative;
+    
+    /* Ajuste de espaciado */
+    margin-top: 0;      /* Pegado a la sección anterior */
+    padding-top: 6rem;  /* Espacio interno generoso arriba */
+    padding-bottom: 4rem;
+    
+    color: var(--color-white);
+    
+    /* Este borde ayuda a la transición visual */
+    border-top: 1px solid rgba(233, 59, 38, 0.2); 
+    
+    /* Sombra interna superior para dar profundidad (Safety West parece estar "encima") */
+    box-shadow: inset 0 20px 40px -10px rgba(0,0,0,0.5);
+    
+    overflow: hidden; 
+}
+
+/* Glow Ambiental (Luz Volumétrica) */
+.safety-west__bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at 50% 30%, 
+        rgba(233, 59, 38, 0.12) 0%, 
+        rgba(18, 5, 5, 0) 60%
+    );
+}
+
+.safety-west__container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+/* =========================================
+   2. BRANDING (Logo Lockup)
+   ========================================= */
+.safety-west__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.safety-west__brand {
+    display: flex;
+    align-items: center; /* Alineación vertical perfecta */
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.03); /* Fondo sutilísimo */
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.safety-west__brand:hover {
+    transform: translateY(-2px);
+    border-color: rgba(233, 59, 38, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.safety-west__brand-icon {
+    height: 45px;
+    width: auto;
+    filter: drop-shadow(0 0 15px rgba(233, 59, 38, 0.6)); /* El fuego brilla */
+}
+
+.safety-west__brand-text {
+    height: 32px; /* Ajuste óptico para que coincida con el icono */
+    width: auto;
+    opacity: 0.9;
+}
+
+/* =========================================
+   3. TIPOGRAFÍA DE ALTO IMPACTO
+   ========================================= */
+.safety-west__tagline {
+    font-family: var(--font-titles);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Línea 1: "Tu Seguridad" (Elegante, Delgada) */
+.sw-line--top {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300; /* Light */
+    letter-spacing: 0.2em; /* Tracking amplio */
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Línea 2: "Nuestra Prioridad" (Brutal, Fuego) */
+.sw-line--bottom {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900; /* Ultra Bold */
+    letter-spacing: -0.02em;
+    
+    /* Gradiente Animado */
+    background-image: linear-gradient(
+        135deg, 
+        #FFD700 0%, 
+        #FF8C00 25%, 
+        #E93B26 50%, 
+        #FF8C00 75%, 
+        #FFD700 100%
+    );
+    background-size: 300% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--color-sw-red);
+    
+    animation: fireText 6s linear infinite;
+    filter: drop-shadow(0 4px 15px rgba(233, 59, 38, 0.3));
+}
+
+@keyframes fireText {
+    to { background-position: 300% center; }
+}
+
+.safety-west__description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* =========================================
+   4. BOTONES Y ACCIONES
+   ========================================= */
+.safety-west__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Estilo común para iconos dentro de botones */
+.sw-btn-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+/* BOTÓN TIENDA (Fuego) */
+.button--sw-fire {
+    background: linear-gradient(135deg, #E93B26 0%, #D62F1B 100%);
+    color: white; /* Texto blanco para máximo contraste */
+    border: none;
+    padding: 1rem 2.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    box-shadow: 0 10px 25px -5px rgba(233, 59, 38, 0.5); /* Glow rojo */
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    z-index: 1;
+}
+
+/* Efecto Hover: Gradiente inverso suave */
+.button--sw-fire::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #FF8C00 0%, #E93B26 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.button--sw-fire:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px -5px rgba(233, 59, 38, 0.7);
+}
+
+.button--sw-fire:hover::before {
+    opacity: 1;
+}
+
+.button--sw-fire:hover .sw-btn-icon {
+    transform: rotate(-10deg) scale(1.1); /* Carrito se mueve */
+}
+
+/* BOTÓN WEB OFICIAL (Outline Glass) */
+.button--sw-outline {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+}
+
+.button--sw-outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* BOTÓN SOCIAL (Instagram) */
+.safety-west__social {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.safety-west__social:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-3px) rotate(10deg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* =========================================
+   5. MARQUEE INFINITO (Corrección de Sombras)
+   ========================================= */
+.safety-west__marquee {
+    position: relative;
+    width: 100%;
+    /* Máscara lateral para suavizar entrada/salida */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    
+    /* CRÍTICO: Padding extra arriba y abajo para que las sombras flotantes no se corten */
+    padding: 4rem 0 6rem; 
+}
+
+.safety-west__track {
+    display: flex;
+    align-items: center;
+    gap: 5rem; /* Más espacio entre productos para que respiren */
+    width: max-content;
+    animation: scrollInfinite 50s linear infinite; /* Velocidad majestuosa */
+    will-change: transform;
+}
+
+/* Pausar al hover */
+.safety-west__track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollInfinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* =========================================
+   6. ITEMS Y SOMBRAS REALISTAS
+   ========================================= */
+.safety-west__item {
+    position: relative;
+    width: 220px; /* Tamaño generoso */
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Animación Flotante */
+    animation: floatItem 6s ease-in-out infinite;
+}
+
+/* Tiempos de flotación variados para naturalidad */
+.safety-west__item:nth-child(2n) { animation-duration: 7s; }
+.safety-west__item:nth-child(3n) { animation-duration: 5.5s; animation-delay: 1s; }
+
+.safety-west__item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    
+    /* SOLUCIÓN MAESTRA: DROP-SHADOW en lugar de BOX-SHADOW */
+    /* Esto crea la sombra siguiendo la forma del PNG (zapato, gafas), no un cuadrado */
+    filter: drop-shadow(0 15px 15px rgba(0, 0, 0, 0.6));
+    
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+}
+
+/* Efecto Pop al Hover */
+.safety-west__item:hover img {
+    transform: scale(1.15) translateY(-10px) rotate(3deg);
+    /* Al subir, la sombra se aleja y se difumina más */
+    filter: drop-shadow(0 30px 30px rgba(233, 59, 38, 0.3)); 
+    z-index: 10;
+}
+
+@keyframes floatItem {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* =========================================
+   7. GRUPO DE CARTELES (Stack Effect Corregido)
+   ========================================= */
+.safety-west__item--group {
+    width: 240px; /* Un poco más ancho para el abanico */
+}
+
+/* Corrección específica para los carteles */
+.sw-sign {
+    position: absolute;
+    width: 65% !important;
+    height: auto !important;
+    
+    /* Usamos drop-shadow también aquí para evitar bordes feos */
+    /* Quitamos el border sólido y box-shadow cuadrado */
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+    
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+/* Posiciones Iniciales (Baraja cerrada) */
+.sw-sign--1 { /* Fondo */
+    z-index: 1;
+    transform: translateX(-20px) translateY(10px) rotate(-15deg);
+    filter: brightness(0.7) drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+}
+
+.sw-sign--2 { /* Medio */
+    z-index: 2;
+    transform: translateX(0) translateY(0) rotate(0deg);
+}
+
+.sw-sign--3 { /* Frente */
+    z-index: 3;
+    transform: translateX(20px) translateY(10px) rotate(15deg);
+}
+
+/* Interacción: Explosión de Baraja */
+.safety-west__item--group:hover .sw-sign--1 {
+    transform: translateX(-70px) translateY(-10px) rotate(-25deg);
+    filter: brightness(1) drop-shadow(0 15px 20px rgba(0,0,0,0.4));
+}
+
+.safety-west__item--group:hover .sw-sign--2 {
+    transform: translateY(-20px) scale(1.1);
+    filter: drop-shadow(0 20px 30px rgba(233, 59, 38, 0.2));
+    z-index: 10;
+}
+
+.safety-west__item--group:hover .sw-sign--3 {
+    transform: translateX(70px) translateY(-10px) rotate(25deg);
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4));
+}
+
+/* =========================================
+   8. RESPONSIVE
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .safety-west {
+        padding-top: 4rem;
+    }
+
+    .sw-line--top { font-size: 1.2rem; }
+    .sw-line--bottom { font-size: 2.5rem; }
+
+    .safety-west__item {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .safety-west__track {
+        gap: 3rem;
+    }
+    
+    .safety-west__actions {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1.5rem;
+    }
+    
+    .button--sw-fire, .button--sw-outline {
+        width: 100%;
+        justify-content: center;
+    }
+}

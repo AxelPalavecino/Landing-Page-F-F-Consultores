@@ -6,6 +6,14 @@
 .projects {
     background-color: var(--color-bg-light) ;
     position: relative;
+    padding-bottom: 8rem;
+    margin-bottom: 0;
+
+    background-image: linear-gradient(
+        to bottom, 
+        var(--color-bg-light) 80%, 
+        rgba(0, 0, 0, 0.05) 100%
+    );
 }
 
 /* =========================================
