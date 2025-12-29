@@ -36,8 +36,8 @@
     gap: 1.5rem;
     margin-bottom: 3.5rem;
     padding: 0 1rem;
-    text-align: center; /* Centrado en móvil */
-    align-items: center;
+    text-align: left; /* Centrado en móvil */
+    align-items: left;
 }
 
 /* Motif */
