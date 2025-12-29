@@ -16,9 +16,13 @@
 
 /* 3. Estilos de layout (contenedores principales) */
 @import url("./layout/header.css");
+@import url('./layout/footer.css');
 
 /* 4. Estilos de secciones */
 @import url("./sections/hero.css");
 @import url("./sections/services.css");
 @import url("./sections/projects.css");
 @import url("./sections/safety-west.css");
+@import url("./sections/testimonials.css");
+@import url("./sections/faq.css");
+@import url("./sections/contact.css");

@@ -6,7 +6,7 @@
 .projects {
     background-color: var(--color-bg-light) ;
     position: relative;
-    padding-bottom: 8rem;
+    padding-bottom: 12rem;
     margin-bottom: 0;
 
     background-image: linear-gradient(

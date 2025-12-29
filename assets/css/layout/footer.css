@@ -1,0 +1,169 @@
+/* assets/css/layout/footer.css */
+
+/* =========================================
+   ESTRUCTURA Y FONDO
+   ========================================= */
+.footer {
+    background-color: var(--color-bg-dark); /* Fondo oscuro #1a1a1a */
+    color: #e0e0e0; /* Texto casi blanco para contraste suave */
+    padding: 5rem 0 2rem;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+/* Borde superior decorativo */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+/* =========================================
+   GRID CONTENT
+   ========================================= */
+.footer__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+/* =========================================
+   COLUMNA 1: MARCA
+   ========================================= */
+.footer__brand-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer__logo {
+    display: inline-block;
+    font-family: var(--font-titles);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-white);
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+}
+
+.footer__logo:hover {
+    color: var(--color-primary);
+}
+
+.footer__tagline {
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    max-width: 300px;
+}
+
+/* =========================================
+   COLUMNA 2: NAVEGACIÓN
+   ========================================= */
+.footer__title {
+    font-family: var(--font-titles);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Pequeño subrayado en el título de columna */
+.footer__title::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-primary);
+    margin-top: 0.5rem;
+    border-radius: 2px;
+}
+
+.footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer__link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer__link:hover {
+    color: var(--color-primary);
+    transform: translateX(5px); /* Deslizamiento suave a la derecha */
+}
+
+/* =========================================
+   COLUMNA 3: SOCIALES
+   ========================================= */
+.footer__socials {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer__social-link {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.05); /* Círculo muy sutil */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Efecto rebote */
+    border: 1px solid transparent;
+}
+
+.footer__social-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.footer__social-link:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(94, 140, 68, 0.3);
+}
+
+/* =========================================
+   BOTTOM BAR (Copyright)
+   ========================================= */
+.footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footer__dev {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Responsive Desktop */
+@media screen and (min-width: 768px) {
+    .footer__bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
