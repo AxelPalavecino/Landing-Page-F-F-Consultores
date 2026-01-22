@@ -2,13 +2,13 @@
 
 // Array de imágenes (Asegúrate de tener estos archivos o cambia los nombres)
 const heroImages = [
-    './assets/img/content/hero/hero1.png',
-    './assets/img/content/hero/hero2.png',
-    './assets/img/content/hero/hero3.png',
-    './assets/img/content/hero/hero4.png',
-    './assets/img/content/hero/hero5.png',
-    './assets/img/content/hero/hero6.png',
-    './assets/img/content/hero/hero7.png',
+    './assets/img/content/hero/hero1.webp',
+    './assets/img/content/hero/hero2.webp',
+    './assets/img/content/hero/hero3.webp',
+    './assets/img/content/hero/hero4.webp',
+    './assets/img/content/hero/hero5.webp',
+    './assets/img/content/hero/hero6.webp',
+    './assets/img/content/hero/hero7.webp',
     
 ];
 
