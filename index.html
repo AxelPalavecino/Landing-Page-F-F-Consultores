@@ -838,7 +838,15 @@
 
                     <!-- COLUMNA IZQUIERDA: Formulario -->
                     <div class="contact__form-wrapper">
-                        <form action="mailto:consulting_she@yahoo.com.ar" method="post" enctype="text/plain" class="contact__form">
+                        <!-- 
+                        CAMBIOS:
+                        1. Quitamos action="mailto:..." (lo manejaremos con JS).
+                        2. Agregamos id="contactForm" para identificarlo.
+                        3. Agregamos el atributo 'novalidate' para que nosotros controlemos 
+                            las alertas de validación con JS y sean más bonitas, 
+                            aunque mantendremos los 'required' por seguridad.
+                        -->
+                        <form id="contactForm" class="contact__form" method="POST" novalidate>
                             
                             <!-- Grupo Nombre -->
                             <div class="contact__group">
@@ -864,9 +872,14 @@
                                 <label for="mensaje" class="contact__label">Cuéntanos tu consulta...</label>
                             </div>
 
-                            <button type="submit" class="button contact__submit">
-                                Enviar Mensaje
-                                <!-- Icono de avión de papel sutil -->
+                            <!-- NUEVO: Contenedor para mensajes de estado (Éxito/Error) -->
+                            <!-- Aquí inyectaremos texto con JS para no usar 'alert()' -->
+                            <div id="formMessage" class="contact__message" style="margin-bottom: 1rem; display: none;"></div>
+
+                            <button type="submit" class="button contact__submit" id="submitButton">
+                                <span id="buttonText">Enviar Mensaje</span>
+                                
+                                <!-- Icono de avión -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button__icon">
                                     <line x1="22" y1="2" x2="11" y2="13"></line>
                                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -1294,6 +1307,20 @@
             </div>
         </div>
     </template>
+
+    <!-- Librería EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        // La encuentras en: EmailJS Dashboard > Account > API Keys
+        emailjs.init({
+            publicKey: "mcpmMOgK1M4QRFmfp",
+            limitRate: {
+                throttle: 10000, // Limita a 1 envío cada 10 segundos (anti-spam)
+            },
+        });
+    })();
+    </script>
 
     <!-- Scripts -->
     <script src="./assets/js/header.js"></script>

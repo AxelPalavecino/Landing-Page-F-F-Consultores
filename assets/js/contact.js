@@ -1,183 +1,123 @@
-/* assets/js/contact.js */
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializamos las variables del formulario
+    const form = document.getElementById('contactForm');
+    const statusDiv = document.getElementById('formMessage');
+    const submitBtn = document.getElementById('submitButton');
+    const btnText = document.getElementById('buttonText');
+    
+    // Verificar que los elementos existen
+    if (!form || !statusDiv || !submitBtn || !btnText) {
+        console.warn('Formulario de contacto: elementos no encontrados');
+        return;
+    }
+    
+    const originalBtnText = btnText.innerText;
 
-/* =========================================
-   CONTACT FORM - Premium Interactions
-   ========================================= */
+    // --- CONFIGURACIÓN DE EMAILJS ---
+    // IMPORTANTE: Reemplaza estos valores con los de tu cuenta EmailJS
+    const serviceID = 'service_402520j';
+    const templateID = 'template_060wr76';
 
-(() => {
-    'use strict';
+    // Expresión regular para validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita que la página se recargue
 
-    /* =========================================
-       1. SUBMIT BUTTON INTERACTION
-       ========================================= */
-    const initSubmitButton = () => {
-        const form = document.querySelector('.contact__form');
-        const submitBtn = document.querySelector('.contact__submit');
-        
-        if (!form || !submitBtn) return;
+        // 1. Limpiar mensajes previos
+        statusDiv.style.display = 'none';
+        statusDiv.innerHTML = '';
+        statusDiv.className = 'contact__message';
 
-        // Store original content
-        const originalContent = submitBtn.innerHTML;
-        const originalText = 'Enviar Mensaje';
-        
-        // Loading state HTML
-        const loadingContent = `
-            <span class="button__spinner"></span>
-            Enviando...
-        `;
-        
-        // Success state HTML
-        const successContent = `
-            <svg class="button__icon button__icon--success" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            ¡Enviado!
-        `;
+        // 2. Obtener y sanitizar valores
+        const nombre = sanitizeInput(document.getElementById('nombre').value);
+        const email = document.getElementById('email').value.trim().toLowerCase();
+        const asunto = sanitizeInput(document.getElementById('asunto').value);
+        const mensaje = sanitizeInput(document.getElementById('mensaje').value);
 
-        // Handle form submission
-        form.addEventListener('submit', (e) => {
-            // Don't prevent default - let mailto work
-            // But add visual feedback
-            
-            if (submitBtn.classList.contains('is-loading')) {
-                e.preventDefault();
-                return;
-            }
-
-            // Set loading state
-            submitBtn.classList.add('is-loading');
-            submitBtn.innerHTML = loadingContent;
-            submitBtn.disabled = true;
-
-            // Simulate sending (for visual feedback)
-            setTimeout(() => {
-                // Success state
-                submitBtn.classList.remove('is-loading');
-                submitBtn.classList.add('is-success');
-                submitBtn.innerHTML = successContent;
-
-                // Reset after delay
-                setTimeout(() => {
-                    submitBtn.classList.remove('is-success');
-                    submitBtn.innerHTML = originalContent;
-                    submitBtn.disabled = false;
-                }, 2000);
-
-            }, 1500);
-        });
-
-        // Add ripple effect on click (if not reduced motion)
-        if (!prefersReducedMotion) {
-            submitBtn.addEventListener('click', createRipple);
-        }
-    };
-
-    /* =========================================
-       2. RIPPLE EFFECT
-       ========================================= */
-    const createRipple = (e) => {
-        const button = e.currentTarget;
-        
-        // Remove existing ripples
-        const existingRipple = button.querySelector('.button__ripple');
-        if (existingRipple) {
-            existingRipple.remove();
+        // 3. Validaciones
+        if (!nombre || !email || !asunto || !mensaje) {
+            mostrarMensaje('Por favor, completa todos los campos obligatorios.', 'error');
+            return;
         }
 
-        // Create ripple element
-        const ripple = document.createElement('span');
-        ripple.className = 'button__ripple';
-        
-        // Calculate position
-        const rect = button.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${x}px`;
-        ripple.style.top = `${y}px`;
-        
-        button.appendChild(ripple);
-        
-        // Remove after animation
-        ripple.addEventListener('animationend', () => {
-            ripple.remove();
-        });
-    };
+        if (nombre.length < 2 || nombre.length > 100) {
+            mostrarMensaje('El nombre debe tener entre 2 y 100 caracteres.', 'error');
+            return;
+        }
 
-    /* =========================================
-       3. INPUT FOCUS ENHANCEMENTS
-       ========================================= */
-    const initInputEnhancements = () => {
-        const inputs = document.querySelectorAll('.contact__input');
-        
-        inputs.forEach(input => {
-            // Add focus line element
-            const group = input.parentElement;
-            if (!group.querySelector('.contact__focus-line')) {
-                const focusLine = document.createElement('span');
-                focusLine.className = 'contact__focus-line';
-                group.appendChild(focusLine);
-            }
+        if (!emailRegex.test(email)) {
+            mostrarMensaje('Por favor, ingresa un correo electrónico válido.', 'error');
+            return;
+        }
 
-            // Add filled class for styling
-            input.addEventListener('blur', () => {
-                if (input.value.trim() !== '') {
-                    input.classList.add('is-filled');
-                } else {
-                    input.classList.remove('is-filled');
-                }
+        if (asunto.length < 3 || asunto.length > 150) {
+            mostrarMensaje('El asunto debe tener entre 3 y 150 caracteres.', 'error');
+            return;
+        }
+
+        if (mensaje.length < 10 || mensaje.length > 2000) {
+            mostrarMensaje('El mensaje debe tener entre 10 y 2000 caracteres.', 'error');
+            return;
+        }
+
+        // 4. UI: Botón en estado "Cargando"
+        submitBtn.disabled = true;
+        btnText.innerText = "Enviando...";
+
+        // 5. Enviar con EmailJS
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                // ÉXITO
+                mostrarMensaje('¡Mensaje enviado con éxito! Nos contactaremos pronto.', 'success');
+                form.reset();
+            })
+            .catch((err) => {
+                // ERROR
+                console.error('Error de EmailJS:', err);
+                mostrarMensaje('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente.', 'error');
+            })
+            .finally(() => {
+                // 6. Restaurar botón
+                submitBtn.disabled = false;
+                btnText.innerText = originalBtnText;
             });
+    });
 
-            // Check on load
-            if (input.value.trim() !== '') {
-                input.classList.add('is-filled');
-            }
-        });
-    };
-
-    /* =========================================
-       4. SOCIAL BUTTONS STAGGER
-       ========================================= */
-    const initSocialStagger = () => {
-        const socialBtns = document.querySelectorAll('.social-btn');
-        
-        if (prefersReducedMotion || !socialBtns.length) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    socialBtns.forEach((btn, index) => {
-                        btn.style.setProperty('--stagger-delay', `${index * 100}ms`);
-                        btn.classList.add('is-visible');
-                    });
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const socialsContainer = document.querySelector('.contact__social-links');
-        if (socialsContainer) {
-            observer.observe(socialsContainer);
-        }
-    };
-
-    /* =========================================
-       INITIALIZATION
-       ========================================= */
-    const init = () => {
-        initSubmitButton();
-        initInputEnhancements();
-        initSocialStagger();
-    };
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
+    // Función para sanitizar inputs (previene XSS básico)
+    function sanitizeInput(str) {
+        if (!str) return '';
+        return str
+            .trim()
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#x27;');
     }
 
-})();
+    // Función para mostrar mensajes de éxito/error
+    function mostrarMensaje(texto, tipo) {
+        statusDiv.style.display = 'block';
+        statusDiv.innerText = texto;
+        statusDiv.style.padding = '1rem';
+        statusDiv.style.borderRadius = '0.5rem';
+        statusDiv.style.marginBottom = '1rem';
+        
+        if (tipo === 'success') {
+            statusDiv.style.color = '#155724';
+            statusDiv.style.backgroundColor = '#d4edda';
+            statusDiv.style.border = '1px solid #c3e6cb';
+        } else {
+            statusDiv.style.color = '#721c24';
+            statusDiv.style.backgroundColor = '#f8d7da';
+            statusDiv.style.border = '1px solid #f5c6cb';
+        }
+
+        // Auto-ocultar mensaje de éxito después de 5 segundos
+        if (tipo === 'success') {
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+    }
+});
