@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- CONFIGURACIÓN DE EMAILJS ---
     // IMPORTANTE: Reemplaza estos valores con los de tu cuenta EmailJS
-    const serviceID = 'service_402520j';
-    const templateID = 'template_060wr76';
+    // const serviceID = ;
+    // const templateID = ;
 
     // Expresión regular para validar email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
