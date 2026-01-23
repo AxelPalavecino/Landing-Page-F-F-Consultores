@@ -1,107 +1,75 @@
+// ========================================
+// EMAILJS - ENVÍO DE FORMULARIO
+// ========================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializamos las variables del formulario
+    const btn = document.getElementById('submitButton');
+    const btnText = document.getElementById('buttonText');
     const form = document.getElementById('contactForm');
     const statusDiv = document.getElementById('formMessage');
-    const submitBtn = document.getElementById('submitButton');
-    const btnText = document.getElementById('buttonText');
-    
+
     // Verificar que los elementos existen
-    if (!form || !statusDiv || !submitBtn || !btnText) {
+    if (!form || !btn || !btnText || !statusDiv) {
         console.warn('Formulario de contacto: elementos no encontrados');
         return;
     }
-    
-    const originalBtnText = btnText.innerText;
 
-    // --- CONFIGURACIÓN DE EMAILJS ---
-    // IMPORTANTE: Reemplaza estos valores con los de tu cuenta EmailJS
-    // const serviceID = ;
-    // const templateID = ;
-
-    // Expresión regular para validar email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const originalBtnText = btnText.textContent;
 
     form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita que la página se recargue
+        event.preventDefault();
 
-        // 1. Limpiar mensajes previos
+        // Limpiar mensajes previos
         statusDiv.style.display = 'none';
-        statusDiv.innerHTML = '';
-        statusDiv.className = 'contact__message';
+        statusDiv.textContent = '';
 
-        // 2. Obtener y sanitizar valores
-        const nombre = sanitizeInput(document.getElementById('nombre').value);
-        const email = document.getElementById('email').value.trim().toLowerCase();
-        const asunto = sanitizeInput(document.getElementById('asunto').value);
-        const mensaje = sanitizeInput(document.getElementById('mensaje').value);
+        // Validación básica
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const asunto = document.getElementById('asunto').value.trim();
+        const mensaje = document.getElementById('mensaje').value.trim();
 
-        // 3. Validaciones
         if (!nombre || !email || !asunto || !mensaje) {
             mostrarMensaje('Por favor, completa todos los campos obligatorios.', 'error');
             return;
         }
 
-        if (nombre.length < 2 || nombre.length > 100) {
-            mostrarMensaje('El nombre debe tener entre 2 y 100 caracteres.', 'error');
-            return;
-        }
+        // Cambiar texto del botón
+        btnText.textContent = 'Enviando...';
+        btn.disabled = true;
 
-        if (!emailRegex.test(email)) {
-            mostrarMensaje('Por favor, ingresa un correo electrónico válido.', 'error');
-            return;
-        }
+        // Configuración de EmailJS
+        const serviceID = 'service_402520j';
+        const templateID = 'template_060wr76';
 
-        if (asunto.length < 3 || asunto.length > 150) {
-            mostrarMensaje('El asunto debe tener entre 3 y 150 caracteres.', 'error');
-            return;
-        }
-
-        if (mensaje.length < 10 || mensaje.length > 2000) {
-            mostrarMensaje('El mensaje debe tener entre 10 y 2000 caracteres.', 'error');
-            return;
-        }
-
-        // 4. UI: Botón en estado "Cargando"
-        submitBtn.disabled = true;
-        btnText.innerText = "Enviando...";
-
-        // 5. Enviar con EmailJS
+        // Enviar formulario usando sendForm (como indica la documentación)
         emailjs.sendForm(serviceID, templateID, this)
-            .then(() => {
-                // ÉXITO
+            .then(function() {
+                btnText.textContent = originalBtnText;
+                btn.disabled = false;
                 mostrarMensaje('¡Mensaje enviado con éxito! Nos contactaremos pronto.', 'success');
                 form.reset();
-            })
-            .catch((err) => {
-                // ERROR
-                console.error('Error de EmailJS:', err);
-                mostrarMensaje('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente.', 'error');
-            })
-            .finally(() => {
-                // 6. Restaurar botón
-                submitBtn.disabled = false;
-                btnText.innerText = originalBtnText;
+                
+                // Limpiar estados visuales de validación
+                const inputs = form.querySelectorAll('.contact__input');
+                inputs.forEach(function(input) {
+                    input.closest('.contact__group').classList.remove('is-valid', 'is-typing');
+                });
+            }, function(err) {
+                btnText.textContent = originalBtnText;
+                btn.disabled = false;
+                console.error('Error EmailJS:', JSON.stringify(err));
+                mostrarMensaje('Hubo un error al enviar el mensaje. Por favor, contáctanos por WhatsApp.', 'error');
             });
     });
 
-    // Función para sanitizar inputs (previene XSS básico)
-    function sanitizeInput(str) {
-        if (!str) return '';
-        return str
-            .trim()
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;')
-            .replace(/'/g, '&#x27;');
-    }
-
-    // Función para mostrar mensajes de éxito/error
+    // Función para mostrar mensajes
     function mostrarMensaje(texto, tipo) {
         statusDiv.style.display = 'block';
-        statusDiv.innerText = texto;
+        statusDiv.textContent = texto;
         statusDiv.style.padding = '1rem';
         statusDiv.style.borderRadius = '0.5rem';
         statusDiv.style.marginBottom = '1rem';
+        statusDiv.style.fontWeight = '500';
         
         if (tipo === 'success') {
             statusDiv.style.color = '#155724';
@@ -113,11 +81,12 @@ document.addEventListener('DOMContentLoaded', function() {
             statusDiv.style.border = '1px solid #f5c6cb';
         }
 
-        // Auto-ocultar mensaje de éxito después de 5 segundos
+        statusDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
         if (tipo === 'success') {
-            setTimeout(() => {
+            setTimeout(function() {
                 statusDiv.style.display = 'none';
-            }, 5000);
+            }, 7000);
         }
     }
 });

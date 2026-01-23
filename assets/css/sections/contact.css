@@ -112,6 +112,39 @@
     position: relative;
     z-index: 1;
     width: 100%; /* Asegurar que no se expanda más allá del grid */
+    transition: box-shadow 0.4s ease;
+}
+
+/* Efecto sutil cuando el formulario está activo */
+.contact__form-wrapper:focus-within {
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.02),
+        0 10px 30px rgba(var(--color-primary-rgb), 0.08),
+        0 20px 50px rgba(0, 0, 0, 0.05);
+}
+
+/* Decoración superior del formulario */
+.contact__form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary) 0%,
+        var(--color-primary-dark) 100%
+    );
+    border-radius: 0 0 4px 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.contact__form-wrapper:focus-within::before {
+    opacity: 1;
+    width: 100px;
 }
 
 .contact__form {
@@ -125,11 +158,72 @@
     position: relative;
 }
 
+/* Icono de estado (aparece al escribir) */
+.contact__group::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.contact__group.is-typing::after {
+    opacity: 1;
+    background-color: var(--color-primary);
+    animation: typingPulse 1s ease-in-out infinite;
+}
+
+.contact__group.is-valid::after {
+    opacity: 1;
+    background-color: #2ecc71;
+    animation: none;
+}
+
+.contact__group--textarea::after {
+    top: 1.5rem;
+    transform: none;
+}
+
+@keyframes typingPulse {
+    0%, 100% { 
+        transform: translateY(-50%) scale(1);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: translateY(-50%) scale(1.3);
+        opacity: 1;
+    }
+}
+
+.contact__group--textarea.is-typing::after,
+.contact__group--textarea.is-valid::after {
+    top: 1.5rem;
+    transform: scale(1);
+    animation-name: typingPulseTextarea;
+}
+
+@keyframes typingPulseTextarea {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: scale(1.3);
+        opacity: 1;
+    }
+}
+
 /* El Input/Textarea Base */
 .contact__input {
     width: 100%;
     /* Padding interno ajustado para evitar desbordes */
-    padding: 1.25rem 1rem 0.75rem; 
+    padding: 1.25rem 2.5rem 0.75rem 1rem; 
     font-family: var(--font-main);
     font-size: 1rem;
     color: var(--color-text-main);
@@ -141,7 +235,8 @@
     transition: 
         background-color 0.3s ease,
         border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
 }
 
 /* Textarea específico */
@@ -183,26 +278,45 @@
     bottom: 0;
     left: 50%;
     width: 0;
-    height: 2px;
+    height: 3px;
     background: linear-gradient(
         90deg,
         var(--color-primary) 0%,
-        var(--color-primary-dark) 100%
+        var(--color-primary-dark) 50%,
+        var(--color-primary) 100%
     );
+    background-size: 200% 100%;
     transform: translateX(-50%);
     transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 1px;
+    border-radius: 2px;
+}
+
+/* Animación shimmer sutil en la línea de focus */
+.contact__input:focus ~ .contact__focus-line {
+    animation: focusLineShimmer 2s ease-in-out infinite;
+}
+
+@keyframes focusLineShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 /* --- ESTADOS INTERACTIVOS --- */
+
+.contact__input:hover:not(:focus) {
+    background-color: rgba(var(--color-primary-rgb), 0.02);
+    border-bottom-color: rgba(var(--color-primary-rgb), 0.3);
+}
 
 .contact__input:focus {
     background-color: var(--color-white);
     border-color: transparent;
     border-bottom-color: transparent;
     box-shadow: 
-        0 4px 12px rgba(var(--color-primary-rgb), 0.08),
-        inset 0 0 0 1px rgba(var(--color-primary-rgb), 0.1);
+        0 4px 20px rgba(var(--color-primary-rgb), 0.12),
+        0 0 0 3px rgba(var(--color-primary-rgb), 0.06),
+        inset 0 0 0 1px rgba(var(--color-primary-rgb), 0.15);
+    transform: translateY(-1px);
 }
 
 .contact__input:focus ~ .contact__focus-line {
@@ -226,6 +340,28 @@
     border-bottom-color: var(--color-border);
 }
 
+/* Estado válido */
+.contact__group.is-valid .contact__input {
+    border-bottom-color: #2ecc71;
+}
+
+.contact__group.is-valid .contact__input:not(:focus) {
+    box-shadow: 0 2px 8px rgba(46, 204, 113, 0.1);
+}
+
+/* Textarea adjustments */
+.contact__group--textarea .contact__focus-line {
+    bottom: auto;
+    top: 0;
+    height: 2px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.contact__group--textarea .contact__input:focus ~ .contact__focus-line {
+    width: calc(100% - 4px);
+    left: 50%;
+}
+
 /* Textarea adjustments */
 .contact__group--textarea .contact__focus-line {
     bottom: auto;
@@ -245,7 +381,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     align-self: stretch; /* En móvil ocupa todo el ancho */
     padding: 1.1rem 2rem;
     position: relative;
@@ -256,6 +392,31 @@
         transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
         box-shadow 0.3s ease,
         background-color 0.3s ease;
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        var(--color-primary-dark) 100%
+    );
+}
+
+.contact__submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    transition: left 0.5s ease;
+}
+
+.contact__submit:hover::before {
+    left: 100%;
 }
 
 .button__icon {
@@ -335,6 +496,12 @@
     /* CORRECCIÓN CRÍTICA: Padding reducido en móvil */
     padding: 1.5rem; 
     border: 1px solid var(--color-border-light);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.contact__card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
 }
 
 .contact__card-title {
@@ -344,7 +511,19 @@
     color: var(--color-text-main);
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 2px solid var(--color-border);
+    position: relative;
+}
+
+.contact__card-title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: 2px;
 }
 
 .contact__details {
@@ -359,18 +538,38 @@
     align-items: flex-start;
     gap: 1rem;
     overflow: hidden; /* Previene desbordes si el texto es muy largo */
+    padding: 0.75rem;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease;
+    margin: -0.75rem;
+    margin-bottom: 0;
+}
+
+.contact__detail-item:hover {
+    background-color: rgba(var(--color-primary-rgb), 0.03);
+}
+
+.contact__detail-item:last-child {
+    margin-bottom: -0.75rem;
 }
 
 .contact__icon-box {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--color-primary-light);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, rgba(var(--color-primary-rgb), 0.15) 100%);
     color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact__detail-item:hover .contact__icon-box {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: white;
 }
 
 .contact__detail-text {
@@ -403,12 +602,12 @@
 }
 
 .contact__link {
-    transition: color 0.3s;
+    transition: color 0.3s ease, padding-left 0.3s ease;
 }
 
 .contact__link:hover {
     color: var(--color-primary);
-    text-decoration: underline;
+    padding-left: 4px;
 }
 
 /* --- REDES SOCIALES --- */
@@ -435,9 +634,9 @@
 }
 
 .social-btn {
-    width: 40px; /* Reducido ligeramente para seguridad en S8+ */
-    height: 40px;
-    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -450,7 +649,6 @@
         border-color 0.3s ease,
         color 0.3s ease,
         box-shadow 0.3s ease;
-    /* Removemos la animación de opacity para que sean visibles inmediatamente */
 }
 
 .social-btn svg {

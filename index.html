@@ -26,6 +26,13 @@
 
     <!-- Favicon -->
     <link rel="icon" href="./assets/img/icons/LogoF&F.webp" type="image/x-icon">
+
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+    emailjs.init('mcpmMOgK1M4QRFmfp')
+</script>
 </head>
 
 <body>
@@ -852,24 +859,28 @@
                             <div class="contact__group">
                                 <input type="text" id="nombre" name="nombre" class="contact__input" placeholder=" " required>
                                 <label for="nombre" class="contact__label">Nombre y Apellido</label>
+                                <span class="contact__focus-line"></span>
                             </div>
 
                             <!-- Grupo Email -->
                             <div class="contact__group">
                                 <input type="email" id="email" name="email" class="contact__input" placeholder=" " required>
                                 <label for="email" class="contact__label">Correo Electrónico</label>
+                                <span class="contact__focus-line"></span>
                             </div>
 
                             <!-- Grupo Asunto -->
                             <div class="contact__group">
                                 <input type="text" id="asunto" name="asunto" class="contact__input" placeholder=" " required>
                                 <label for="asunto" class="contact__label">Asunto</label>
+                                <span class="contact__focus-line"></span>
                             </div>
 
                             <!-- Grupo Mensaje -->
                             <div class="contact__group contact__group--textarea">
                                 <textarea id="mensaje" name="mensaje" class="contact__input contact__textarea" placeholder=" " rows="4" required></textarea>
                                 <label for="mensaje" class="contact__label">Cuéntanos tu consulta...</label>
+                                <span class="contact__focus-line"></span>
                             </div>
 
                             <!-- NUEVO: Contenedor para mensajes de estado (Éxito/Error) -->
@@ -953,12 +964,12 @@
                         <!-- Mapa Embebido (Elegante) -->
                         <div class="contact__map-box">
                             <iframe 
-                                src="https://www.google.com/maps?q=Chacabuco+286+San+Andres+de+Giles+6720+Bs.+As.+Argentina&output=embed" 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1641.0!2d-59.4447!3d-34.4461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDI2JzQ2LjAiUyA1OcKwMjYnNDAuOSJX!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar&maptype=roadmap" 
                                 class="contact__map-frame"
                                 allowfullscreen="" 
                                 loading="lazy" 
                                 referrerpolicy="no-referrer-when-downgrade"
-                                title="Ubicación de F&F Consultores">
+                                title="Ubicación de F&F Consultores - Chacabuco 286, San Andrés de Giles">
                             </iframe>
                         </div>
 
@@ -1308,20 +1319,6 @@
         </div>
     </template>
 
-    <!-- Librería EmailJS -->
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-    (function(){
-        // La encuentras en: EmailJS Dashboard > Account > API Keys
-        emailjs.init({
-            publicKey: "",
-            limitRate: {
-                throttle: 10000, // Limita a 1 envío cada 10 segundos (anti-spam)
-            },
-        });
-    })();
-    </script> -->
-
     <!-- Scripts -->
     <script src="./assets/js/header.js"></script>
     <script src="./assets/js/hero.js"></script>
@@ -1331,6 +1328,7 @@
     <script src="./assets/js/safety-west.js"></script>
     <script src="./assets/js/testimonials.js"></script>
     <script src="./assets/js/faq.js"></script>
+    <script src="./assets/js/contact-effects.js"></script>
     <script src="./assets/js/contact.js"></script>
 </body>
 </html>
