@@ -17,6 +17,8 @@
     <noscript> 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;900&display=swap">
     </noscript>
+    <!-- Fuentes all c:oding STUDIO -->
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Precarga de Imagenes de Hero -->
     <link rel="preload" as="image" href="./assets/img/content/hero/hero1.png">
@@ -135,8 +137,8 @@
                     <div class="services__header-content">
                         <h2 class="services__title">Soluciones Integrales para su Empresa</h2>
                         <p class="services__description">
-                            Nuestro equipo de expertos brinda soluciones personalizadas en seguridad, ambiente y gestión, 
-                            maximizando el rendimiento y garantizando el cumplimiento normativo.
+                            Nuestro equipo de expertos brinda soluções personalizadas em segurança, ambiente e gestão, 
+                            maximizando o desempenho e garantindo o cumprimento normativo.
                         </p>
                     </div>
                 </div>
@@ -273,6 +275,56 @@
                             <button class="button button--sm button--outline services__button" data-id="ensayos">
                                 Ver Detalles
                             </button>
+                        </div>
+                    </article>
+
+                    <!-- CARD 8: PROMO ALL C:ODING STUDIO -->
+                    <article class="services__card services__card--coding" id="coding-promo-card">
+                        
+                        <!-- Decoración de fondo -->
+                        <div class="coding-card__bg-grid"></div>
+                        <div class="coding-card__glow"></div>
+
+                        <div class="coding-card__content">
+                            <!-- Logo tipográfico -->
+                            <div class="coding-logo">
+                                <span class="coding-logo__all">all</span>
+                                <div class="coding-logo__bottom">
+                                    <span class="coding-logo__c">c</span><span class="coding-logo__dots">:</span><span class="coding-logo__oding">oding</span>
+                                </div>
+                                <span class="coding-logo__studio">STUDIO</span>
+                            </div>
+
+                            <p class="coding-card__description">
+                                Desarrollo web & software a medida. Transformamos ideas en productos digitales escalables.
+                            </p>
+
+                            <!-- Tech Tags -->
+                            <div class="coding-card__tags">
+                                <span class="coding-card__tag">React</span>
+                                <span class="coding-card__tag">Node.js</span>
+                                <span class="coding-card__tag">UI/UX</span>
+                                <span class="coding-card__tag">Full Stack</span>
+                            </div>
+
+                            <button class="button coding-card__button" id="btn-open-coding">
+                                <span class="coding-card__btn-icon">&lt;/&gt;</span>
+                                Conocer más
+                            </button>
+                        </div>
+
+                        <!-- Terminal decorativa (solo desktop) -->
+                        <div class="coding-card__terminal">
+                            <div class="coding-card__terminal-bar">
+                                <span class="coding-card__dot coding-card__dot--red"></span>
+                                <span class="coding-card__dot coding-card__dot--yellow"></span>
+                                <span class="coding-card__dot coding-card__dot--green"></span>
+                            </div>
+                            <div class="coding-card__terminal-body">
+                                <span class="coding-card__line"><span class="coding-card__prompt">$</span> npm run build</span>
+                                <span class="coding-card__line coding-card__line--success">✓ Compiled successfully</span>
+                                <span class="coding-card__line coding-card__line--cursor"><span class="coding-card__prompt">$</span> <span class="coding-card__blink">_</span></span>
+                            </div>
                         </div>
                     </article>
 
@@ -1317,6 +1369,94 @@
             </div>
         </div>
     </template>
+
+    <!-- ============================================
+    MODAL PROMOCIONAL: ALL C:ODING STUDIO
+    ============================================ -->
+    <div class="modal coding-modal" id="coding-modal" aria-hidden="true">
+        <div class="modal__overlay coding-modal__overlay" data-close-coding></div>
+
+        <div class="modal__container coding-modal__container" role="dialog" aria-modal="true">
+            
+            <header class="coding-modal__header">
+                <div class="coding-logo coding-logo--small">
+                    <span class="coding-logo__all">all</span>
+                    <div class="coding-logo__bottom">
+                        <span class="coding-logo__c">c</span><span class="coding-logo__dots">:</span><span class="coding-logo__oding">oding</span>
+                    </div>
+                </div>
+                <button class="modal__close coding-modal__close" aria-label="Cerrar modal" data-close-coding>✕</button>
+            </header>
+
+            <div class="modal__body coding-modal__body">
+                <div class="coding-modal__intro">
+                    <h4>&lt;/&gt; Desarrollo Web Full Stack</h4>
+                    <p>Transformamos ideas en productos digitales escalables y modernos. Aplicamos las mejores prácticas en UI/UX, arquitecturas robustas y metodologías ágiles para entregar resultados de alto impacto.</p>
+                </div>
+                
+                <div class="modal__grid coding-modal__grid">
+                    <div class="modal__item coding-modal__item">
+                        <h5 class="modal__item-title coding-modal__item-title">Frontend & UI/UX</h5>
+                        <ul class="modal__list coding-modal__list">
+                            <li>Landing Pages de alto rendimiento y conversión.</li>
+                            <li>Aplicaciones web responsivas con React / Next.js.</li>
+                            <li>Diseño UI/UX centrado en el usuario (Figma).</li>
+                            <li>Animaciones y micro-interacciones fluidas.</li>
+                        </ul>
+                    </div>
+                    <div class="modal__item coding-modal__item">
+                        <h5 class="modal__item-title coding-modal__item-title">Backend & Arquitectura</h5>
+                        <ul class="modal__list coding-modal__list">
+                            <li>APIs RESTful con Node.js / Express / Python.</li>
+                            <li>Bases de datos SQL y NoSQL (PostgreSQL, MongoDB).</li>
+                            <li>Despliegue en la nube (AWS, Vercel, Railway).</li>
+                            <li>Integración con servicios de terceros y pasarelas de pago.</li>
+                        </ul>
+                    </div>
+                    <div class="modal__item coding-modal__item">
+                        <h5 class="modal__item-title coding-modal__item-title">E-Commerce & CMS</h5>
+                        <ul class="modal__list coding-modal__list">
+                            <li>Tiendas online personalizadas y optimizadas.</li>
+                            <li>Integración con MercadoPago, Stripe y más.</li>
+                            <li>Paneles de administración a medida.</li>
+                        </ul>
+                    </div>
+                    <div class="modal__item coding-modal__item">
+                        <h5 class="modal__item-title coding-modal__item-title">Mantenimiento & SEO</h5>
+                        <ul class="modal__list coding-modal__list">
+                            <li>Optimización de rendimiento y Core Web Vitals.</li>
+                            <li>SEO técnico y posicionamiento orgánico.</li>
+                            <li>Soporte continuo y actualizaciones.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tech Stack visual -->
+                <div class="coding-modal__stack">
+                    <span class="coding-modal__stack-label">Tech Stack</span>
+                    <div class="coding-modal__stack-tags">
+                        <span class="coding-modal__stack-tag">HTML5</span>
+                        <span class="coding-modal__stack-tag">CSS3</span>
+                        <span class="coding-modal__stack-tag">JavaScript</span>
+                        <span class="coding-modal__stack-tag">React</span>
+                        <span class="coding-modal__stack-tag">Next.js</span>
+                        <span class="coding-modal__stack-tag">Node.js</span>
+                        <span class="coding-modal__stack-tag">Python</span>
+                        <span class="coding-modal__stack-tag">PostgreSQL</span>
+                        <span class="coding-modal__stack-tag">MongoDB</span>
+                        <span class="coding-modal__stack-tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="coding-modal__footer">
+                <a href="#contacto" class="button coding-card__button" data-close-coding>
+                    <span class="coding-card__btn-icon">&lt;/&gt;</span>
+                    Solicitar Presupuesto IT
+                </a>
+            </footer>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="./assets/js/header.js"></script>

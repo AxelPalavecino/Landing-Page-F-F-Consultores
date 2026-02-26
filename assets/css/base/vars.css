@@ -60,4 +60,14 @@
     
     /* Un fondo oscuro específico para esta sección (para que resalte el fuego) */
     --color-sw-bg: #120505; /* Un negro rojizo muy profundo */
+
+    /* --- BRANDING ALL C:ODING STUDIO (Promoción Full Stack) --- */
+    --color-coding-bg: #0D0F36;       /* Azul muy oscuro (Fondo principal) */
+    --color-coding-card: #15194D;     /* Un tono apenitas más claro para elevar elementos */
+    --color-coding-primary: #294380;  /* Azul medio */
+    --color-coding-accent: #6699DD;   /* Azul claro (Para el Glow y botones) */
+    --color-coding-text: #F1F6CE;     /* Amarillo pastel (Texto) */
+    
+    --font-coding-title: 'MuseoModerno', sans-serif;
+    --font-coding-text: 'Poppins', sans-serif;
 }

@@ -117,5 +117,76 @@ const initModals = () => {
     });
 };
 
-// Inicializar
-document.addEventListener('DOMContentLoaded', initModals);
+// =========================================
+// LÓGICA MODAL ALL C:ODING STUDIO
+// =========================================
+const initCodingModal = () => {
+    const btnOpenCoding = document.getElementById('btn-open-coding');
+    const codingModal = document.getElementById('coding-modal');
+    
+    if (!btnOpenCoding || !codingModal) return;
+
+    // Abrir Modal
+    btnOpenCoding.addEventListener('click', (e) => {
+        e.preventDefault();
+        codingModal.setAttribute('aria-hidden', 'false');
+        codingModal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        
+        // Animar items con stagger
+        const items = codingModal.querySelectorAll('.coding-modal__item');
+        items.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(15px)';
+            item.style.transition = `opacity 0.4s ease ${index * 0.08 + 0.15}s, transform 0.4s ease ${index * 0.08 + 0.15}s`;
+            
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                });
+            });
+        });
+        
+        // Animar tech stack tags
+        const tags = codingModal.querySelectorAll('.coding-modal__stack-tag');
+        tags.forEach((tag, index) => {
+            tag.style.opacity = '0';
+            tag.style.transform = 'scale(0.8)';
+            tag.style.transition = `opacity 0.3s ease ${index * 0.04 + 0.4}s, transform 0.3s ease ${index * 0.04 + 0.4}s`;
+            
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    tag.style.opacity = '1';
+                    tag.style.transform = 'scale(1)';
+                });
+            });
+        });
+    });
+
+    // Cerrar Modal
+    const closeCodingModal = () => {
+        codingModal.classList.remove('is-open');
+        codingModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    codingModal.addEventListener('click', (e) => {
+        if (e.target.closest('[data-close-coding]')) {
+            closeCodingModal();
+        }
+    });
+    
+    // Cerrar con ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && codingModal.classList.contains('is-open')) {
+            closeCodingModal();
+        }
+    });
+};
+
+// Modificamos el listener final para que inicie ambos sistemas
+document.addEventListener('DOMContentLoaded', () => {
+    initModals();       // El original de F&F
+    initCodingModal();  // El nuevo de Coding Studio
+});
