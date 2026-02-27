@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Precarga de Imagenes de Hero -->
-    <link rel="preload" as="image" href="./assets/img/content/hero/hero1.png">
+    <link rel="preload" as="image" href="./assets/img/content/hero/hero1.webp">
 
     <!-- Importamos archivo CSS -->
     <link rel="stylesheet" href="./assets/css/style.css?v=1.1">
@@ -52,7 +52,9 @@
 
             <!-- Botón Hamburguesa (Solo visible en móvil) -->
             <button class="header__toggle" aria-label="Abrir menú">
-                ☰
+                <span class="header__toggle-bar"></span>
+                <span class="header__toggle-bar"></span>
+                <span class="header__toggle-bar"></span>
             </button>
 
             <!-- Menú de navegación -->
@@ -670,15 +672,17 @@
 
                     <!-- TESTIMONIO 1: Adrián S. -->
                     <article class="testimonial__card">
-                        <div class="testimonial__quote-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.925 14.927 15.086C15.535 14.247 16.354 13.633 17.385 13.242L17.922 13.06L17.922 7L13.922 7L13.922 2.5L23.017 2.5L23.017 12.398C23.017 15.228 22.156 17.514 20.432 19.255C18.708 20.996 16.57 21.867 14.017 21ZM5.01697 21L5.01697 18C5.01697 16.896 5.32097 15.925 5.92697 15.086C6.53297 14.247 7.35197 13.633 8.38497 13.242L8.92197 13.06L8.92197 7L4.92197 7L4.92197 2.5L14.017 2.5L14.017 12.398C14.017 15.228 13.156 17.514 11.432 19.255C9.70797 20.996 7.56997 21.867 5.01697 21Z" />
-                            </svg>
-                        </div>
-                        <div class="testimonial__content">
-                            <p class="testimonial__text">
-                                “Excelente atención!! Muy cordiales en el trato personal y muy responsables en su trabajo. Responden de manera rápida y eficaz ante cualquier consulta y siempre brindan soluciones ante algún problema.”
-                            </p>
+                        <div class="testimonial__card-inner">
+                            <div class="testimonial__quote-icon" aria-hidden="true">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M11.3 2.5H6.6C4.6 2.5 3 4.1 3 6.1v4.7c0 2 1.6 3.6 3.6 3.6h2.1c-.3 2.2-1.7 3.7-1.7 3.7l-.6.7.9.2s4-1 5.1-5.4c.2-.9.3-1.8.3-2.8V6.1c0-2-1.6-3.6-3.6-3.6h-.4zm9.6 0H16c-2 0-3.6 1.6-3.6 3.6v4.7c0 2 1.6 3.6 3.6 3.6h2.1c-.3 2.2-1.7 3.7-1.7 3.7l-.6.7.9.2s4-1 5.1-5.4c.2-.9.3-1.8.3-2.8V6.1c0-2-1.6-3.6-3.6-3.6h-.4z"/>
+                                </svg>
+                            </div>
+                            <div class="testimonial__content">
+                                <p class="testimonial__text">
+                                    Excelente atención!! Muy cordiales en el trato personal y muy responsables en su trabajo. Responden de manera rápida y eficaz ante cualquier consulta y siempre brindan soluciones ante algún problema.
+                                </p>
+                            </div>
                         </div>
                         <div class="testimonial__author">
                             <div class="testimonial__avatar">
@@ -696,13 +700,15 @@
 
                     <!-- TESTIMONIO 2: Juan C. -->
                     <article class="testimonial__card">
-                        <div class="testimonial__quote-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.925 14.927 15.086C15.535 14.247 16.354 13.633 17.385 13.242L17.922 13.06L17.922 7L13.922 7L13.922 2.5L23.017 2.5L23.017 12.398C23.017 15.228 22.156 17.514 20.432 19.255C18.708 20.996 16.57 21.867 14.017 21ZM5.01697 21L5.01697 18C5.01697 16.896 5.32097 15.925 5.92697 15.086C6.53297 14.247 7.35197 13.633 8.38497 13.242L8.92197 13.06L8.92197 7L4.92197 7L4.92197 2.5L14.017 2.5L14.017 12.398C14.017 15.228 13.156 17.514 11.432 19.255C9.70797 20.996 7.56997 21.867 5.01697 21Z" /></svg>
-                        </div>
-                        <div class="testimonial__content">
-                            <p class="testimonial__text">
-                                “La atención es muy buena, atentos a todos los detalles ya sea en lo administrativo, para trámites con los organismos referidos a la seguridad e higiene, y en obra siempre controlando.”
-                            </p>
+                        <div class="testimonial__card-inner">
+                            <div class="testimonial__quote-icon" aria-hidden="true">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.3 2.5H6.6C4.6 2.5 3 4.1 3 6.1v4.7c0 2 1.6 3.6 3.6 3.6h2.1c-.3 2.2-1.7 3.7-1.7 3.7l-.6.7.9.2s4-1 5.1-5.4c.2-.9.3-1.8.3-2.8V6.1c0-2-1.6-3.6-3.6-3.6h-.4zm9.6 0H16c-2 0-3.6 1.6-3.6 3.6v4.7c0 2 1.6 3.6 3.6 3.6h2.1c-.3 2.2-1.7 3.7-1.7 3.7l-.6.7.9.2s4-1 5.1-5.4c.2-.9.3-1.8.3-2.8V6.1c0-2-1.6-3.6-3.6-3.6h-.4z"/></svg>
+                            </div>
+                            <div class="testimonial__content">
+                                <p class="testimonial__text">
+                                    La atención es muy buena, atentos a todos los detalles ya sea en lo administrativo, para trámites con los organismos referidos a la seguridad e higiene, y en obra siempre controlando.
+                                </p>
+                            </div>
                         </div>
                         <div class="testimonial__author">
                             <div class="testimonial__avatar">
@@ -720,13 +726,15 @@
 
                     <!-- TESTIMONIO 3: Ariel B. -->
                     <article class="testimonial__card">
-                        <div class="testimonial__quote-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.925 14.927 15.086C15.535 14.247 16.354 13.633 17.385 13.242L17.922 13.06L17.922 7L13.922 7L13.922 2.5L23.017 2.5L23.017 12.398C23.017 15.228 22.156 17.514 20.432 19.255C18.708 20.996 16.57 21.867 14.017 21ZM5.01697 21L5.01697 18C5.01697 16.896 5.32097 15.925 5.92697 15.086C6.53297 14.247 7.35197 13.633 8.38497 13.242L8.92197 13.06L8.92197 7L4.92197 7L4.92197 2.5L14.017 2.5L14.017 12.398C14.017 15.228 13.156 17.514 11.432 19.255C9.70797 20.996 7.56997 21.867 5.01697 21Z" /></svg>
-                        </div>
-                        <div class="testimonial__content">
-                            <p class="testimonial__text">
-                                “Excelente Servicio, siempre cumplen con los Objetivos y nos resuelven los problemas... Muy recomendable”
-                            </p>
+                        <div class="testimonial__card-inner">
+                            <div class="testimonial__quote-icon" aria-hidden="true">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.3 2.5H6.6C4.6 2.5 3 4.1 3 6.1v4.7c0 2 1.6 3.6 3.6 3.6h2.1c-.3 2.2-1.7 3.7-1.7 3.7l-.6.7.9.2s4-1 5.1-5.4c.2-.9.3-1.8.3-2.8V6.1c0-2-1.6-3.6-3.6-3.6h-.4zm9.6 0H16c-2 0-3.6 1.6-3.6 3.6v4.7c0 2 1.6 3.6 3.6 3.6h2.1c-.3 2.2-1.7 3.7-1.7 3.7l-.6.7.9.2s4-1 5.1-5.4c.2-.9.3-1.8.3-2.8V6.1c0-2-1.6-3.6-3.6-3.6h-.4z"/></svg>
+                            </div>
+                            <div class="testimonial__content">
+                                <p class="testimonial__text">
+                                    Excelente Servicio, siempre cumplen con los Objetivos y nos resuelven los problemas... Muy recomendable
+                                </p>
+                            </div>
                         </div>
                         <div class="testimonial__author">
                             <div class="testimonial__avatar">
@@ -744,13 +752,15 @@
 
                     <!-- TESTIMONIO 4: Sebastián G. -->
                     <article class="testimonial__card">
-                        <div class="testimonial__quote-icon" aria-hidden="true">
-                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.896 14.321 15.925 14.927 15.086C15.535 14.247 16.354 13.633 17.385 13.242L17.922 13.06L17.922 7L13.922 7L13.922 2.5L23.017 2.5L23.017 12.398C23.017 15.228 22.156 17.514 20.432 19.255C18.708 20.996 16.57 21.867 14.017 21ZM5.01697 21L5.01697 18C5.01697 16.896 5.32097 15.925 5.92697 15.086C6.53297 14.247 7.35197 13.633 8.38497 13.242L8.92197 13.06L8.92197 7L4.92197 7L4.92197 2.5L14.017 2.5L14.017 12.398C14.017 15.228 13.156 17.514 11.432 19.255C9.70797 20.996 7.56997 21.867 5.01697 21Z" /></svg>
-                        </div>
-                        <div class="testimonial__content">
-                            <p class="testimonial__text">
-                                “No sé si hará más de diez años que estamos trabajando juntos y la verdad nunca hubo un problema. Las diferencias que tuvimos siempre se aclararon hablando. Al día de hoy no tengo ninguna queja, sino estar conforme con el trabajo que tenemos juntos.”
-                            </p>
+                        <div class="testimonial__card-inner">
+                            <div class="testimonial__quote-icon" aria-hidden="true">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.3 2.5H6.6C4.6 2.5 3 4.1 3 6.1v4.7c0 2 1.6 3.6 3.6 3.6h2.1c-.3 2.2-1.7 3.7-1.7 3.7l-.6.7.9.2s4-1 5.1-5.4c.2-.9.3-1.8.3-2.8V6.1c0-2-1.6-3.6-3.6-3.6h-.4zm9.6 0H16c-2 0-3.6 1.6-3.6 3.6v4.7c0 2 1.6 3.6 3.6 3.6h2.1c-.3 2.2-1.7 3.7-1.7 3.7l-.6.7.9.2s4-1 5.1-5.4c.2-.9.3-1.8.3-2.8V6.1c0-2-1.6-3.6-3.6-3.6h-.4z"/></svg>
+                            </div>
+                            <div class="testimonial__content">
+                                <p class="testimonial__text">
+                                    No sé si hará más de diez años que estamos trabajando juntos y la verdad nunca hubo un problema. Las diferencias que tuvimos siempre se aclararon hablando. Al día de hoy no tengo ninguna queja, sino estar conforme con el trabajo que tenemos juntos.
+                                </p>
+                            </div>
                         </div>
                         <div class="testimonial__author">
                             <div class="testimonial__avatar">

@@ -27,7 +27,7 @@
             const initials = extractInitials(name);
 
             // Generate a subtle color variation based on index
-            const hueShift = (index * 15) % 60; // Slight hue variation
+            const hueShift = (index * 15) % 60;
             
             // Replace SVG with initials
             avatarEl.innerHTML = `<span class="testimonial__initials">${initials}</span>`;
@@ -42,18 +42,15 @@
      * "Juan Carlos" -> "JC"
      */
     const extractInitials = (name) => {
-        // Remove special characters and extra spaces
         const cleanName = name
             .replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '')
             .trim();
         
-        // Split into words and get first letter of each
         const words = cleanName.split(/\s+/).filter(word => word.length > 0);
         
         if (words.length === 0) return '?';
         if (words.length === 1) return words[0].charAt(0).toUpperCase();
         
-        // Get first letter of first and last word
         const firstInitial = words[0].charAt(0).toUpperCase();
         const lastInitial = words[words.length - 1].charAt(0).toUpperCase();
         
@@ -98,10 +95,11 @@
                         setTimeout(() => {
                             card.classList.remove('testimonial__card--hidden');
                             card.classList.add('testimonial__card--visible');
-                        }, index * 150); // 150ms stagger between cards
+                        }, index * 150);
                     });
                     
-                    observer.unobserve(entry.target);
+                    // Fully disconnect the observer — no more work needed
+                    observer.disconnect();
                 }
             });
         };
@@ -111,42 +109,11 @@
     };
 
     /* =========================================
-       3. SUBTLE PARALLAX ON QUOTE ICON
-       ========================================= */
-    const initQuoteParallax = () => {
-        if (prefersReducedMotion) return;
-
-        const cards = document.querySelectorAll('.testimonial__card');
-        
-        cards.forEach(card => {
-            const quoteIcon = card.querySelector('.testimonial__quote-icon');
-            if (!quoteIcon) return;
-
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width - 0.5;
-                const y = (e.clientY - rect.top) / rect.height - 0.5;
-                
-                // Subtle movement (max 10px)
-                const moveX = x * 10;
-                const moveY = y * 10;
-                
-                quoteIcon.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1) rotate(-10deg)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                quoteIcon.style.transform = '';
-            });
-        });
-    };
-
-    /* =========================================
        INITIALIZATION
        ========================================= */
     const init = () => {
         initAvatarInitials();
         initStaggeredReveal();
-        initQuoteParallax();
     };
 
     if (document.readyState === 'loading') {
