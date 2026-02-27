@@ -172,21 +172,6 @@
     right: 0;
 }
 
-/* Overlay oscuro detrás del menú móvil */
-.nav::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-    z-index: -1;
-    pointer-events: none;
-}
-
 .nav.show-menu::before {
     opacity: 1;
     visibility: visible;
