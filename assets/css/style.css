@@ -1,28 +1,31 @@
-/* 
-    assets/css/style.css 
-    Este archivo actua como hoja de ruta para el archivo index.html, importando en orden cronologico 
+/*
+    assets/css/style.css
+    Este archivo actua como hoja de ruta para el archivo index.html, importando en orden cronologico
     (a partir del orden en que coloque las importaciones) los diferentes archivos CSS.
+
+    NOTA: cada @import lleva ?v=X para forzar la recarga en el navegador cuando se
+    actualiza el CSS (cache busting). Subir este número al hacer cambios de estilos.
 */
 
 /* 1. Reiniciar estilos por defecto del navegador y definir variables globales */
-@import url("./base/reset.css");
-@import url("./base/vars.css");
-@import url("./base/global.css");
+@import url("./base/reset.css?v=1.2");
+@import url("./base/vars.css?v=1.2");
+@import url("./base/global.css?v=1.2");
 
 /* 2. Componentes reutilizables */
-@import url("./components/buttons.css");
-@import url("./components/modals.css");
-@import url("./components/lightbox.css");
+@import url("./components/buttons.css?v=1.2");
+@import url("./components/modals.css?v=1.2");
+@import url("./components/lightbox.css?v=1.2");
 
 /* 3. Estilos de layout (contenedores principales) */
-@import url("./layout/header.css");
-@import url('./layout/footer.css');
+@import url("./layout/header.css?v=1.2");
+@import url('./layout/footer.css?v=1.2');
 
 /* 4. Estilos de secciones */
-@import url("./sections/hero.css");
-@import url("./sections/services.css");
-@import url("./sections/projects.css");
-@import url("./sections/safety-west.css");
-@import url("./sections/testimonials.css");
-@import url("./sections/faq.css");
-@import url("./sections/contact.css");
+@import url("./sections/hero.css?v=1.2");
+@import url("./sections/services.css?v=1.2");
+@import url("./sections/projects.css?v=1.2");
+@import url("./sections/safety-west.css?v=1.2");
+@import url("./sections/testimonials.css?v=1.2");
+@import url("./sections/faq.css?v=1.2");
+@import url("./sections/contact.css?v=1.2");

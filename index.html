@@ -106,7 +106,7 @@
     <link rel="preload" as="image" href="./assets/img/content/hero/hero1.webp" fetchpriority="high">
 
     <!-- Importamos archivo CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css?v=1.1">
+    <link rel="stylesheet" href="./assets/css/style.css?v=1.2">
 
     <!-- Favicon -->
     <link rel="icon" href="./assets/img/icons/LogoF&F.webp" type="image/webp">
@@ -132,7 +132,9 @@
 
             <!-- Logo: El href lleva al inicio, la img es lo que se ve -->
             <a href="#inicio" class="header__logo">
-                <img src="./assets/img/icons/LogoF&F.webp" alt="F&F Consultores Logo" class="header__img">
+                <span class="header__logo-badge">
+                    <img src="./assets/img/icons/LogoF&F.webp" alt="F&F Consultores Logo" class="header__img">
+                </span>
                 <span class="header__title-text">F&F Consultores Asociados</span>
             </a>
 
@@ -154,7 +156,15 @@
                     <li class="nav__item"><a href="#testimonios" class="nav__link">Testimonios</a></li>
 
                     <!-- Notar que "contacto" tiene una clase distinta -->
-                    <li class="nav__item"><a href="#contacto" class="nav__link nav__link--cta">Contacto</a></li>
+                    <li class="nav__item">
+                        <a href="#contacto" class="nav__link nav__link--cta">
+                            Contacto
+                            <svg class="nav__cta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </li>
                 </ul>
                 
                 <!-- Botón cerrar (dentro del nav para móvil) -->
