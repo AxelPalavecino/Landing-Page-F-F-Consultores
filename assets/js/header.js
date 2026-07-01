@@ -23,6 +23,7 @@ if (navToggle) {
         // Al hacer clic, añadimos la clase 'show-menu' al nav
         // CSS se encarga de la animación (right: 0)
         navMenu.classList.add('show-menu');
+        navToggle.setAttribute('aria-expanded', 'true');
     });
 }
 
@@ -36,6 +37,7 @@ if (navClose) {
         // Al hacer clic, quitamos la clase 'show-menu'
         // El menú vuelve a esconderse (right: -100%)
         navMenu.classList.remove('show-menu');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
     });
 }
 
@@ -49,6 +51,7 @@ const navLink = document.querySelectorAll('.nav__link');
 const linkAction = () => {
     // Cuando hagamos clic en cualquier link, quitamos la clase show-menu
     navMenu.classList.remove('show-menu');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
 }
 
 // Por cada link, agregamos un "escuchador" de clic

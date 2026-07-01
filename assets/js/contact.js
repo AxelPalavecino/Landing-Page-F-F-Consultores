@@ -27,6 +27,20 @@ document.getElementById('contactForm')
             return;
         }
 
+        // Anti-spam: si el honeypot está completo, es un bot. Fingimos éxito y abortamos.
+        const honeypot = document.getElementById('website');
+        if (honeypot && honeypot.value.trim() !== '') {
+            mostrarMensaje('¡Mensaje enviado con éxito! Nos contactaremos pronto.', 'success');
+            this.reset();
+            return;
+        }
+
+        // Guarda: si el SDK de EmailJS no cargó, evitamos el error y guiamos al usuario.
+        if (typeof emailjs === 'undefined') {
+            mostrarMensaje('No pudimos cargar el servicio de envío. Por favor, contáctanos por WhatsApp.', 'error');
+            return;
+        }
+
         // Cambiar texto del botón
         const originalText = btnText.textContent;
         btnText.textContent = 'Enviando...';
